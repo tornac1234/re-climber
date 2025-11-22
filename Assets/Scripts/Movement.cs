@@ -6,7 +6,6 @@ public class Movement : MonoBehaviour {
     public float gravity = 3f;
     public float jumpForce =5f;
 
-    public bool IsClimbing;
     public bool IsGrounded;
     public bool IsJumping = false;
     
@@ -40,13 +39,17 @@ public class Movement : MonoBehaviour {
     private void MovePlayer(float horizontalMovement)
     {
 
-        rb.linearVelocity = new Vector2(horizontalMovement, rb.linearVelocity.y);
+        
         
         if (IsJumping)
         {
 
-            rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+            rb.AddForce(new Vector2(horizontalMovement, jumpForce), ForceMode2D.Impulse);
             IsJumping = false;
+        }
+        if (IsGrounded){
+            
+            rb.linearVelocity = new Vector2(horizontalMovement, rb.linearVelocity.y);
         }
     }
 }
