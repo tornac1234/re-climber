@@ -7,6 +7,8 @@ public class ItemPlacer : MonoBehaviour
     // Let's say we only have one inventory slot
     public GameObject selectedPrefab;
 
+    public Transform PlaceReference;
+
     public void Start()
     {
         inventory.OnPickup += SelectPrefab;
@@ -31,6 +33,20 @@ public class ItemPlacer : MonoBehaviour
 
     public void Update()
     {
-        
+        if (Input.GetButtonDown("Place"))
+        {
+            TryPlaceItem();
+        }
+    }
+
+    public void TryPlaceItem()
+    {
+        if (!selectedPrefab)
+        {
+            return;
+        }
+
+        GameObject instance = GameObject.Instantiate(selectedPrefab);
+        instance.transform.position = PlaceReference.position;
     }
 }
