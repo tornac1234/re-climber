@@ -5,6 +5,7 @@ public class Climbing : MonoBehaviour
     public bool IsClimbing;
     public float climbingSpeed = 4f;
     public Movement movement;
+    public Rigidbody2D rb;
 
     public void SetClimbing(bool isClimbing)
     {
@@ -12,7 +13,8 @@ public class Climbing : MonoBehaviour
          * Sets IsClimbing field + removes gravity if climbing
          */ 
         IsClimbing = isClimbing;
-        movement.rb.gravityScale = isClimbing ? 0f : 1f;
+        movement.enabled = !isClimbing;
+        rb.gravityScale = isClimbing ? 0f : 1f;
     }
 
     private void Update()
@@ -34,10 +36,16 @@ public class Climbing : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!IsClimbing)
+        {
+            return;
+        }
+
         // Get normalized climb direction
         float horizontalMovement = Input.GetAxis("Horizontal");
         float verticalMovement = Input.GetAxis("Vertical");
         Vector2 direction = new Vector2(horizontalMovement, verticalMovement);
+        // TODO: consume stamina
         direction.Normalize();
 
         MovePlayer(direction);
