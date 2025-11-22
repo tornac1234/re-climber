@@ -65,14 +65,6 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void SelectSlot(int index)
-    {
-        if (Slots[index].IsOccupied)
-        {
-            
-        }
-    }
-
     public class ItemSlot
     {
         public GameObject Prefab;

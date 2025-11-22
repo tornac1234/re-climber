@@ -5,6 +5,7 @@ public class ItemPickUp : MonoBehaviour
 {
     public List<ItemReference> itemsAround = new();
     private ItemReference closestItem;
+    private Inventory inventory;
 
     public void StumbleIntoItem(ItemReference itemRef)
     {
@@ -52,9 +53,8 @@ public class ItemPickUp : MonoBehaviour
         if (itemsAround.Count == 0) return;
 
         // Method to outline object
-        if (Input.GetButtonDown("Interact"))
+        if (Input.GetButtonDown("Interact") && inventory.PickupItem(closestItem.reference))
         {
-            // [Method to pick up closest item]
             itemsAround.Remove(closestItem);
             Destroy(closestItem.gameObject);
             updateClosestItem();

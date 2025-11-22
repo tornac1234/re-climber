@@ -7,20 +7,18 @@ public class Movement : MonoBehaviour {
     public float gravity = 3f;
     public float jumpForce = 8f;
 
-    public bool IsClimbing ;
-    public bool IsGrounded ;
-    public bool IsJumping ;
+    public bool IsClimbing;
+    public bool IsGrounded;
+    public bool IsJumping;
     
     public Transform groundCheckRight;
     public Transform groundCheckLeft;
-    
-    public Vector2 velocity = Vector2.zero;
+
     public Rigidbody2D rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        
     }
 
     public void FixedUpdate()
