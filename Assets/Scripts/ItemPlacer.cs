@@ -7,7 +7,8 @@ public class ItemPlacer : MonoBehaviour
     // Let's say we only have one inventory slot
     public GameObject selectedPrefab;
 
-    public Transform PlaceReference;
+    public Transform RopePlaceReference;
+    public Transform PitonPlaceReference;
 
     public void Start()
     {
@@ -45,8 +46,20 @@ public class ItemPlacer : MonoBehaviour
         {
             return;
         }
+        inventory.RemoveItem(0);
 
         GameObject instance = GameObject.Instantiate(selectedPrefab);
-        instance.transform.position = PlaceReference.position;
+        
+        ItemData itemData = instance.GetComponent<ItemData>();
+        switch (itemData.Name)
+        {
+            case "Rope":
+                instance.transform.position = RopePlaceReference.position;
+                break;
+
+            case "Piton":
+                inventory.transform.position = PitonPlaceReference.position;
+                break;
+        }
     }
 }

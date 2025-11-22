@@ -52,9 +52,9 @@ public class ItemPickUp : MonoBehaviour
             closestItem = null;
             return;
         }
-       UpdateClosestItem();
+        UpdateClosestItem();
     }
-    // Update is called once per frame
+    
     void Update()
     {
         if (closestItem == null) return;
