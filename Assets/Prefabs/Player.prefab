@@ -327,6 +327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Climbing
   IsClimbing: 0
+  stamina: {fileID: 6805741570450219017}
   climbingSpeed: 100
   movement: {fileID: 853018641667651778}
   rb: {fileID: 873226215255645382}
@@ -346,6 +347,7 @@ MonoBehaviour:
   value: 1
   timeDeplete: 10
   timeRefill: 5
+  ratioDepleteIdleClimb: 0.3
   isRest: 0
 --- !u!1 &7265628428332412931
 GameObject:

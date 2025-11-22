@@ -12,12 +12,12 @@ public class Climbing : MonoBehaviour
 
     private void Start()
     {
-        stamina.noStamina += noStamina;
+        stamina.noStamina += NoStamina;
     }
 
     public void OnDestroy()
     {
-        stamina.noStamina -= noStamina;
+        stamina.noStamina -= NoStamina;
     }
 
     public void SetClimbing(bool isClimbing)
@@ -30,7 +30,7 @@ public class Climbing : MonoBehaviour
         rb.gravityScale = isClimbing ? 0f : 1f;
     }
 
-    private void noStamina()
+    private void NoStamina()
     {
         SetClimbing(false);
     }
