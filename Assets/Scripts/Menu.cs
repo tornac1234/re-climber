@@ -49,6 +49,8 @@ public class Menu : MonoBehaviour
         settingsButton.onClick.AddListener(settings);
         leaveSettingsButton.onClick.AddListener(settings);
 
+        backgroundPanel.SetActive(true);
+
         //settingsPanel.SetActive(false);
     }
 
