@@ -14,10 +14,11 @@ public class ItemPickUp : MonoBehaviour
 
     public void EscapeItemRange(ItemReference itemRef)
     {
+        itemRef.GetComponent<SpriteRenderer>().material.SetInt("_IsActive", 0);
         itemsAround.Remove(itemRef);
     }
 
-    private void updateClosestItem()
+    private void UpdateClosestItem()
     {
         if (itemsAround.Count == 0)
         {
@@ -35,7 +36,13 @@ public class ItemPickUp : MonoBehaviour
                 minDist = newDist;
             }
         }
+        if (minItem == closestItem) return;
+        if (closestItem != null)
+        {
+            closestItem.GetComponent<SpriteRenderer>().material.SetInt("_IsActive", 0);
+        }
         closestItem = minItem;
+        closestItem.GetComponent<SpriteRenderer>().material.SetInt("_IsActive", 1);
     }
 
     private void FixedUpdate()
@@ -45,19 +52,17 @@ public class ItemPickUp : MonoBehaviour
             closestItem = null;
             return;
         }
-        updateClosestItem();
+       UpdateClosestItem();
     }
     // Update is called once per frame
     void Update()
     {
-        if (itemsAround.Count == 0) return;
-
-        // Method to outline object
+        if (closestItem == null) return;
         if (Input.GetButtonDown("Interact") && inventory.PickupItem(closestItem.reference))
         {
             itemsAround.Remove(closestItem);
             Destroy(closestItem.gameObject);
-            updateClosestItem();
+            UpdateClosestItem();
         }
     }
 }
