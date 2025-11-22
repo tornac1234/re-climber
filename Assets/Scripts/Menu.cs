@@ -3,14 +3,15 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Unity.VisualScripting;
-
+using UnityEngine.Audio;
 public class Menu : MonoBehaviour
 {
     // Gestion du volume
-    public float mainVolume = 0.5F;
-    public float musicVolume = 0.5F;
-    public float environmentVolume = 0.5F;
-    public float sfxVolume = 0.5F;
+    public float startVolume = 0.6F; // De base on veut le slider à x%
+
+
+    public float maxVolume = 30f; // Quand un volume vaut 1, il a son groupe audio à 30dB
+    public float minVolume = -50f; // Quand un volume vaut 0, il a son groupe audio à -50dB
 
     // UI panels
     public GameObject backgroundPanel;
@@ -47,9 +48,16 @@ public class Menu : MonoBehaviour
     {
         playButton.onClick.AddListener(play);
         settingsButton.onClick.AddListener(settings);
+        quitButton.onClick.AddListener(Application.Quit);
+
         leaveSettingsButton.onClick.AddListener(settings);
 
-        backgroundPanel.SetActive(true);
+        startVolume = Mathf.Lerp(minVolume, maxVolume, startVolume);
+
+        mainVolumeSlider.onValueChanged.AddListener(volumeMainUpdate);
+        mainVolumeSlider.minValue = minVolume;
+        mainVolumeSlider.maxValue = maxVolume;
+        mainVolumeSlider.value = startVolume;
 
         //settingsPanel.SetActive(false);
     }
@@ -58,6 +66,9 @@ public class Menu : MonoBehaviour
     {
         playButton.onClick.RemoveListener(play);
         settingsButton.onClick.RemoveListener(settings);
+        quitButton.onClick.RemoveListener(Application.Quit);
+
+
         leaveSettingsButton.onClick.RemoveListener(settings);
     }
 
@@ -73,8 +84,34 @@ public class Menu : MonoBehaviour
         {
             settingsPanel.SetActive(!settingsPanel.activeSelf);
         }
+        else
+        {
+            backgroundPanel.SetActive(true);
+        }
     }
-    
 
-    
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            settings();
+        }
+    }
+
+    public void restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void volumeMainUpdate(float newVolume)
+    {
+        volumeMixerUpdate(newVolume, , "mainVolumeParam");
+    }
+
+    public void volumeMixerUpdate(float newVolume, AudioMixer audioMixer, string parameterName)
+    {
+        newVolume = Mathf.Lerp(minVolume, maxVolume, newVolume);
+        audioMixer.SetFloat(parameterName, newVolume);
+    }
+
 }
