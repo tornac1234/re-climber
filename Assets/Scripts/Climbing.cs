@@ -3,9 +3,10 @@ using UnityEngine;
 public class Climbing : MonoBehaviour
 {
     public bool IsClimbing;
-    public float climbingSpeed = 4f;
+    public float climbingSpeed = 100f;
     public Movement movement;
     public Rigidbody2D rb;
+    public float velocityMag => movement.rb.linearVelocity.magnitude;
 
     public void SetClimbing(bool isClimbing)
     {
@@ -42,10 +43,10 @@ public class Climbing : MonoBehaviour
         }
 
         // Get normalized climb direction
-        float horizontalMovement = Input.GetAxis("Horizontal");
-        float verticalMovement = Input.GetAxis("Vertical");
+        float horizontalMovement = Input.GetAxis("ClimbHorizontal");
+        float verticalMovement = Input.GetAxis("ClimbVertical");
         Vector2 direction = new Vector2(horizontalMovement, verticalMovement);
-        // TODO: consume stamina
+        
         direction.Normalize();
 
         MovePlayer(direction);
