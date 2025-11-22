@@ -233,7 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dce28589247961fee96ff2864cee7761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Movement
-  speed: 5
+  speed: 100
   climbSpeed: 4
   gravity: 3
   jumpForce: 8

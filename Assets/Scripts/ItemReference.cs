@@ -5,7 +5,7 @@ public class ItemReference : MonoBehaviour
     public GameObject reference;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("TriggEnter");
+        Debug.Log("OnTriggerEnter2D");
         if (collision.TryGetComponent(out ItemPickUp itemPickUp))
         {
             itemPickUp.StumbleIntoItem(this);
@@ -14,7 +14,7 @@ public class ItemReference : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("TriggExit");
+        Debug.Log("poiutydgsd");
         if (collision.TryGetComponent(out ItemPickUp itemPickUp))
         {
             itemPickUp.EscapeItemRange(this);

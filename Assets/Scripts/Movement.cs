@@ -19,7 +19,7 @@ public class Movement : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    public void FixedUpdate()
     {
         float horizontalMovement = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
 
@@ -31,13 +31,13 @@ public class Movement : MonoBehaviour {
         MovePlayer(horizontalMovement);
     }
 
-    void MovePlayer(float horizontalMovement)
+    private void MovePlayer(float horizontalMovement)
     {
         rb.linearVelocity = new Vector2(horizontalMovement, rb.linearVelocity.y);
 
         if (IsJumping)
         {
-            rb.AddForce(new Vector2(0f, jumpForce) );
+            rb.AddForce(new Vector2(0f, jumpForce));
             IsJumping = false;
         }
     }
