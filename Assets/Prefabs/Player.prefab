@@ -219,6 +219,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickUp
   itemsAround: []
   inventory: {fileID: 495535202896014547}
+  movement: {fileID: 853018641667651778}
+  climbing: {fileID: 2003540535886879946}
 --- !u!61 &363060333738920693
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -263,8 +265,8 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.16, y: 0.16}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.15, y: 0.15}
+  m_EdgeRadius: 0.1
 --- !u!50 &873226215255645382
 Rigidbody2D:
   serializedVersion: 5
@@ -332,6 +334,8 @@ MonoBehaviour:
   climbingSpeed: 100
   movement: {fileID: 853018641667651778}
   rb: {fileID: 873226215255645382}
+  IsPiton: 0
+  IsRope: 0
 --- !u!114 &6805741570450219017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,7 +353,7 @@ MonoBehaviour:
   timeDeplete: 10
   timeRefill: 5
   ratioDepleteIdleClimb: 0.3
-  isRest: 0
+  ratioDepleteOnRope: 0.15
 --- !u!1 &7265628428332412931
 GameObject:
   m_ObjectHideFlags: 0
