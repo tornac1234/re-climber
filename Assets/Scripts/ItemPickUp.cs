@@ -9,20 +9,14 @@ public class ItemPickUp : MonoBehaviour
     public List<ItemReference> itemsAround = new ();
     private ItemReference closestItem;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void StumbleIntoItem(ItemReference itemRef)
     {
-        if (collision.CompareTag(giverTag))
-        {
-            itemsAround.Add(collision.GetComponent<ItemReference>());
-        }
+        itemsAround.Add(itemRef);
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    public void EscapeItemRange(ItemReference itemRef)
     {
-        if (collision.CompareTag(giverTag))
-        {
-            itemsAround.Remove(collision.GetComponent<ItemReference>());
-        }
+        itemsAround.Remove(itemRef);
     }
 
     private void updateClosestItem()
