@@ -95,6 +95,10 @@ public class Climbing : MonoBehaviour
             if (dashStartingStamina - stamina.value >= dashDuration * dashSpeedMultiplier * dashStaminaMultiplier / stamina.timeDeplete)
             {
                 SetDashing(false);
+                if (!Input.GetButton("Climb"))
+                {
+                    SetClimbing(false);
+                }
             }
         }
     }
