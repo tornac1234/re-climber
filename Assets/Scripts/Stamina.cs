@@ -50,11 +50,8 @@ public class Stamina : MonoBehaviour
         else if (isClimbing)
         {
             float climbSpeedRatio = climbing.velocityMag / (climbing.climbingSpeed / 50);
-            if (climbing.IsRope)
-            {
-                climbSpeedRatio *= ratioDepleteOnRope;
-            }
-            setStamina(value - (ratioDepleteIdleClimb + (1 - ratioDepleteIdleClimb) * climbSpeedRatio) * dt / timeDeplete);
+            float factorIsRope = climbing.IsRope ? ratioDepleteOnRope : 1F;
+            setStamina(value - (ratioDepleteIdleClimb + (1 - ratioDepleteIdleClimb) * climbSpeedRatio) * factorIsRope * dt / timeDeplete);
             if (value == 0F)
             {
                 noStamina?.Invoke();
