@@ -2,14 +2,34 @@ using UnityEngine;
 
 public class ItemPlacer : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public Inventory inventory;
+
+    // Let's say we only have one inventory slot
+    public GameObject selectedPrefab;
+
+    public void Start()
     {
-        
+        inventory.OnPickup += SelectPrefab;
+        inventory.OnRemove += DeselectPrefab;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDestroy()
+    {
+        inventory.OnPickup -= SelectPrefab;
+        inventory.OnRemove -= DeselectPrefab;
+    }
+
+    public void SelectPrefab(GameObject prefab)
+    {
+        selectedPrefab = prefab;
+    }
+
+    public void DeselectPrefab(int _)
+    {
+        selectedPrefab = null;
+    }
+
+    public void Update()
     {
         
     }
