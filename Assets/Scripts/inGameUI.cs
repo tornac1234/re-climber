@@ -3,18 +3,19 @@ using UnityEngine.UI;
 
 public class inGameUI : MonoBehaviour
 {
-    public const float width = 750f;
+    public float maxWidth = 750f;
 
     public Image staminaBar;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        staminaBar.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 0.5f * width);
+        maxWidth = staminaBar.GetComponent<RectTransform>().sizeDelta.x;
+        staminaUpdate(0.2f);
     }
 
     public void staminaUpdate(float staminaRatio)
     {
-        staminaBar.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, staminaRatio * width);
+        staminaBar.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, staminaRatio * maxWidth);
     }
 }
