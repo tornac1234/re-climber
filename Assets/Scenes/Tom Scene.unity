@@ -119,6 +119,24 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &930922282 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 175480855540850678, guid: 590be240edf964543b18adec4de1e9b5, type: 3}
+  m_PrefabInstance: {fileID: 1601873596}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &930922286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930922282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed3a8e6ac0d7b694e8920ad6afe60d95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemReference
+  reference: {fileID: 1545751114}
 --- !u!1001 &1112173420
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -128,16 +146,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5215675209016155175, guid: f23d93ac1776a174c8042dadfe2aec36, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4947
+      objectReference: {fileID: 0}
+    - target: {fileID: 5215675209016155175, guid: f23d93ac1776a174c8042dadfe2aec36, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.677
+      objectReference: {fileID: 0}
+    - target: {fileID: 5215675209016155175, guid: f23d93ac1776a174c8042dadfe2aec36, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.3839908
+      value: 1.206
       objectReference: {fileID: 0}
     - target: {fileID: 5215675209016155175, guid: f23d93ac1776a174c8042dadfe2aec36, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.048131436
+      value: 0.156
       objectReference: {fileID: 0}
     - target: {fileID: 5215675209016155175, guid: f23d93ac1776a174c8042dadfe2aec36, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.0008574919
       objectReference: {fileID: 0}
     - target: {fileID: 5215675209016155175, guid: f23d93ac1776a174c8042dadfe2aec36, type: 3}
       propertyPath: m_LocalRotation.w
@@ -184,6 +210,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5471282040733424839, guid: f23d93ac1776a174c8042dadfe2aec36, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1545751119}
+    - targetCorrespondingSourceObject: {fileID: 5471282040733424839, guid: f23d93ac1776a174c8042dadfe2aec36, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1545751122}
   m_SourcePrefab: {fileID: 100100000, guid: f23d93ac1776a174c8042dadfe2aec36, type: 3}
 --- !u!1 &1545751114 stripped
 GameObject:
@@ -255,7 +284,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.098634005, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -306,11 +335,11 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.00416559, y: 0.074980065}
+  m_Offset: {x: -0.00416559, y: 0.0072897375}
   m_SpriteTilingProperty:
     border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
     pivot: {x: 0.5, y: 0.5}
@@ -320,8 +349,21 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.20165545, y: 0.30996013}
+  m_Size: {x: 0.20165545, y: 0.17457947}
   m_EdgeRadius: 0
+--- !u!114 &1545751122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545751114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff2901a915b87bf4ab5684b5a5bee78b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemPickUp
+  itemsAround: []
 --- !u!1001 &1601873596
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -334,13 +376,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemGiver
       objectReference: {fileID: 0}
+    - target: {fileID: 1709635040836660635, guid: 590be240edf964543b18adec4de1e9b5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 1709635040836660635, guid: 590be240edf964543b18adec4de1e9b5, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709635040836660635, guid: 590be240edf964543b18adec4de1e9b5, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709635040836660635, guid: 590be240edf964543b18adec4de1e9b5, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7448944839876931647, guid: 590be240edf964543b18adec4de1e9b5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.277
+      value: 2.819
       objectReference: {fileID: 0}
     - target: {fileID: 7448944839876931647, guid: 590be240edf964543b18adec4de1e9b5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.051
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 7448944839876931647, guid: 590be240edf964543b18adec4de1e9b5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -377,7 +435,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 175480855540850678, guid: 590be240edf964543b18adec4de1e9b5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 930922286}
   m_SourcePrefab: {fileID: 100100000, guid: 590be240edf964543b18adec4de1e9b5, type: 3}
 --- !u!1 &1707275719
 GameObject:

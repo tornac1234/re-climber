@@ -6,7 +6,7 @@ using UnityEngine.Rendering;
 public class ItemPickUp : MonoBehaviour
 {
     private const string giverTag = "Giver";
-    private readonly List<ItemReference> itemsAround = new ();
+    public List<ItemReference> itemsAround = new ();
     private ItemReference closestItem;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -27,6 +27,11 @@ public class ItemPickUp : MonoBehaviour
 
     private void updateClosestItem()
     {
+        if (itemsAround.Count == 0)
+        {
+            closestItem = null;
+            return;
+        }
         ItemReference minItem = itemsAround[0];
         float minDist = float.MaxValue;
         foreach (ItemReference item in itemsAround)
@@ -38,6 +43,7 @@ public class ItemPickUp : MonoBehaviour
                 minDist = newDist;
             }
         }
+        closestItem = minItem;
     }
 
     private void FixedUpdate()
@@ -53,11 +59,13 @@ public class ItemPickUp : MonoBehaviour
     void Update()
     {
         if (itemsAround.Count == 0) return;
+
         // Method to outline object
         if (Input.GetButton("Interact"))
         {
             // [Method to pick up closest item]
             itemsAround.Remove(closestItem);
+            Destroy(closestItem.gameObject);
             updateClosestItem();
         }
     }
