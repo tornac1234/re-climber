@@ -1,12 +1,9 @@
-using NUnit.Framework.Interfaces;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class ItemPickUp : MonoBehaviour
 {
-    private const string giverTag = "Giver";
-    public List<ItemReference> itemsAround = new ();
+    public List<ItemReference> itemsAround = new();
     private ItemReference closestItem;
 
     public void StumbleIntoItem(ItemReference itemRef)
