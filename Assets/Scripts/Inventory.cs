@@ -30,6 +30,7 @@ public class Inventory : MonoBehaviour
         }
 
         ItemSlot slot = Slots.First(slot => !slot.IsOccupied);
+        Debug.Log($"slot: {slot.Index}");
 
         slot.Prefab = itemPrefab;
 
