@@ -344,22 +344,6 @@ MonoBehaviour:
   IsClimbing: 0
   climbingSpeed: 4
   movement: {fileID: 853018641667651778}
---- !u!1 &7265628428332412931
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2473356487103264830}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!4 &2473356487103264830
 Transform:
   m_ObjectHideFlags: 0
