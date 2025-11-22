@@ -666,6 +666,14 @@ PrefabInstance:
       propertyPath: IsClimbing
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2003540535886879946, guid: f23d93ac1776a174c8042dadfe2aec36, type: 3}
+      propertyPath: dashDuration
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003540535886879946, guid: f23d93ac1776a174c8042dadfe2aec36, type: 3}
+      propertyPath: dashSpeedMultiplier
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5215675209016155175, guid: f23d93ac1776a174c8042dadfe2aec36, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.39

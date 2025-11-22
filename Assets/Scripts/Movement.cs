@@ -6,6 +6,8 @@ public class Movement : MonoBehaviour
 
     public float speed = 100f;
     public float jumpForce = 5f;
+    public float Cooldown = 0.5f;
+    private float lastJump = -1f;
 
     public bool IsGrounded;
     public bool IsJumping;
@@ -28,10 +30,12 @@ public class Movement : MonoBehaviour
     {
         IsGrounded = Physics2D.OverlapArea(groundCheckLeft.position, groundCheckRight.position, GroundLayerMask);
 
-        if (!IsJumping && Input.GetButtonDown("Jump") && IsGrounded && stamina.consumeStamina(0.1f))
+        if (!IsJumping && Input.GetButtonDown("Jump") && IsGrounded && stamina.consumeStamina(0.1f) && (Time.time - lastJump >= Cooldown))
         {
             IsJumping = true;
+            lastJump = Time.time;
         }
+        
     }
 
     public void FixedUpdate()
@@ -45,9 +49,11 @@ public class Movement : MonoBehaviour
     {
         if (IsJumping)
         {
-            rb.AddForce(new Vector2(horizontalMovement, jumpForce), ForceMode2D.Impulse);
 
+            rb.AddForce(new Vector2(horizontalMovement, jumpForce), ForceMode2D.Impulse);
+                                                              
             IsJumping = false;
+
         }
         if (IsGrounded)
         {
