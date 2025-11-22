@@ -10,19 +10,24 @@ public class Movement : MonoBehaviour {
     public bool IsClimbing ;
     public bool IsGrounded ;
     public bool IsJumping ;
-
+    
+    public Transform groundCheckRight;
+    public Transform groundCheckLeft;
+    
     public Vector2 velocity = Vector2.zero;
     public Rigidbody2D rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        
     }
 
     public void FixedUpdate()
     {
+        IsGrounded = Physics2D.OverlapArea(groundCheckLeft.position,groundCheckRight.position);
         float horizontalMovement = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-
+        
         if (Input.GetButtonDown("Jump") && (IsGrounded || IsClimbing))
         {
             IsJumping = true;

@@ -33,6 +33,15 @@ public class Menu : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        playButton.onClick.AddListener(play);
+    }
+
+    private void OnDestroy()
+    {
+        playButton.onClick.RemoveListener(play);
+    }
+    public void play()
+    {
+
     }
 }
