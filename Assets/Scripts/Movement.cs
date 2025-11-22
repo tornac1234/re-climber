@@ -28,7 +28,7 @@ public class Movement : MonoBehaviour
     {
         IsGrounded = Physics2D.OverlapArea(groundCheckLeft.position, groundCheckRight.position, GroundLayerMask);
 
-        if (Input.GetButtonDown("Jump") && IsGrounded)
+        if (!IsJumping && Input.GetButtonDown("Jump") && IsGrounded && stamina.consumeStamina(0.1f))
         {
             IsJumping = true;
         }
@@ -46,7 +46,7 @@ public class Movement : MonoBehaviour
         if (IsJumping)
         {
             rb.AddForce(new Vector2(horizontalMovement, jumpForce), ForceMode2D.Impulse);
-            stamina.consumeStamina(0.1f);
+
             IsJumping = false;
         }
         if (IsGrounded)
