@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour {
 
-    public float speed = 5f;
+    public float speed = 100f;
     public float climbSpeed = 4f;
     public float gravity = 3f;
-    public float jumpForce = 8f;
+    public float jumpForce =5f;
 
     public bool IsClimbing;
     public bool IsGrounded;
@@ -14,6 +14,7 @@ public class Movement : MonoBehaviour {
     public Transform groundCheckRight;
     public Transform groundCheckLeft;
 
+    public Vector2 velocity = Vector2.zero;
     public Rigidbody2D rb;
 
     void Start()
@@ -36,11 +37,12 @@ public class Movement : MonoBehaviour {
 
     private void MovePlayer(float horizontalMovement)
     {
-        rb.linearVelocity = new Vector2(horizontalMovement, rb.linearVelocity.y);
 
+        rb.linearVelocity = new Vector2(horizontalMovement, rb.linearVelocity.y);
+        
         if (IsJumping)
         {
-            rb.AddForce(new Vector2(0f, jumpForce));
+            rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
             IsJumping = false;
         }
     }
