@@ -38,19 +38,19 @@ public class Stamina : MonoBehaviour
         float dt = Time.deltaTime;
         bool isClimbing = Movement.IsClimbing;
         bool isResting = false; // à relier à Movement.cs. Pour l'instant, on utilise isRest à la place (variable publique modifiable en live)
-        if (isClimbing)
+        if (isRest)
+        {
+            if (value < 1.0)
+            {
+                setStamina(value + dt / timeRefill);
+            }
+        }
+        else if (isClimbing)
         {
             setStamina(value - dt / timeDeplete);
             if (value == 0F)
             {
                 noStamina?.Invoke();
-            }
-        }
-        else if (isRest)
-        {
-            if (value < 1.0)
-            {
-                setStamina(value + dt / timeRefill);
             }
         }
     }
