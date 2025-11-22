@@ -8,6 +8,7 @@ public class Stamina : MonoBehaviour
     public float timeDeplete = 10F;
     public float timeRefill = 5F;
     public float ratioDepleteIdleClimb = 0.3F;
+    public float ratioDepleteOnRope = 0.15F;
     public UnityAction noStamina;
 
     public void setStamina(float newValue)
@@ -49,7 +50,11 @@ public class Stamina : MonoBehaviour
         else if (isClimbing)
         {
             float climbSpeedRatio = climbing.velocityMag / (climbing.climbingSpeed / 50);
-            setStamina(value - (ratioDepleteIdleClimb + (1-ratioDepleteIdleClimb)*climbSpeedRatio) * dt / timeDeplete);
+            if (climbing.IsRope)
+            {
+                climbSpeedRatio *= ratioDepleteOnRope;
+            }
+            setStamina(value - (ratioDepleteIdleClimb + (1 - ratioDepleteIdleClimb) * climbSpeedRatio) * dt / timeDeplete);
             if (value == 0F)
             {
                 noStamina?.Invoke();

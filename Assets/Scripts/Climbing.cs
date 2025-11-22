@@ -9,6 +9,7 @@ public class Climbing : MonoBehaviour
     public Movement movement;
     public Rigidbody2D rb;
     public bool IsPiton = false;
+    public bool IsRope = false;
     public float velocityMag => movement.rb.linearVelocity.magnitude;
 
     private void Start()
@@ -28,6 +29,7 @@ public class Climbing : MonoBehaviour
          */ 
         IsClimbing = isClimbing;
         movement.enabled = !isClimbing;
+        movement.IsGrounded = false;
         rb.gravityScale = isClimbing ? 0f : 1f;
     }
 
@@ -66,7 +68,6 @@ public class Climbing : MonoBehaviour
         Vector2 direction = new Vector2(horizontalMovement, verticalMovement);
         
         direction.Normalize();
-
         MovePlayer(direction);
     }
     private void MovePlayer(Vector2 direction)
