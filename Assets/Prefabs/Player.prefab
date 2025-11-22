@@ -313,7 +313,8 @@ MonoBehaviour:
   groundCheckLeft: {fileID: 1095988720944889886}
   velocity: {x: 0, y: 0}
   rb: {fileID: 873226215255645382}
-  climbing: {fileID: 0}
+  climbing: {fileID: 2003540535886879946}
+  stamina: {fileID: 6805741570450219017}
 --- !u!114 &2003540535886879946
 MonoBehaviour:
   m_ObjectHideFlags: 0

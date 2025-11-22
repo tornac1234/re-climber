@@ -16,6 +16,7 @@ public class Movement : MonoBehaviour
     public Vector2 velocity;
     public Rigidbody2D rb;
     public Climbing climbing;
+    public Stamina stamina;
 
     void Start()
     {
@@ -45,6 +46,7 @@ public class Movement : MonoBehaviour
         if (IsJumping)
         {
             rb.AddForce(new Vector2(horizontalMovement, jumpForce), ForceMode2D.Impulse);
+            stamina.consumeStamina(0.1f);
             IsJumping = false;
         }
         if (IsGrounded)
