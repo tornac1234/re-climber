@@ -36,7 +36,6 @@ public class Stamina : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(value);
         float dt = Time.deltaTime;
         bool isClimbing = climbing.IsClimbing;
         bool isResting = climbing.IsPiton || climbing.movement.IsGrounded;

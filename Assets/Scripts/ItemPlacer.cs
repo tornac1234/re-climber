@@ -12,14 +12,14 @@ public class ItemPlacer : MonoBehaviour
 
     public void Start()
     {
-        inventory.OnPickup += SelectPrefab;
-        inventory.OnRemove += DeselectPrefab;
+        Inventory.OnPickup += SelectPrefab;
+        Inventory.OnRemove += DeselectPrefab;
     }
 
     private void OnDestroy()
     {
-        inventory.OnPickup -= SelectPrefab;
-        inventory.OnRemove -= DeselectPrefab;
+        Inventory.OnPickup -= SelectPrefab;
+        Inventory.OnRemove -= DeselectPrefab;
     }
 
     public void SelectPrefab(GameObject prefab)

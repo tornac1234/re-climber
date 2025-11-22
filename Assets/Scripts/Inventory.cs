@@ -8,8 +8,8 @@ public class Inventory : MonoBehaviour
     public const int SIZE = 1;
     public List<ItemSlot> Slots;
 
-    public UnityAction<GameObject> OnPickup;
-    public UnityAction<int> OnRemove;
+    public static event UnityAction<GameObject> OnPickup;
+    public static event UnityAction<int> OnRemove;
 
     public void Start()
     {
@@ -30,11 +30,10 @@ public class Inventory : MonoBehaviour
         }
 
         ItemSlot slot = Slots.First(slot => !slot.IsOccupied);
-        Debug.Log($"slot: {slot.Index}");
 
         slot.SetPrefab(itemPrefab);
-
         OnPickup?.Invoke(itemPrefab);
+        Debug.Log("filled item prefab " + itemPrefab.name);
 
         return true;
     }
