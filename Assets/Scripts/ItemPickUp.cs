@@ -52,7 +52,7 @@ public class ItemPickUp : MonoBehaviour
         if (itemsAround.Count == 0) return;
 
         // Method to outline object
-        if (Input.GetButton("Interact"))
+        if (Input.GetButtonDown("Interact"))
         {
             // [Method to pick up closest item]
             itemsAround.Remove(closestItem);
