@@ -32,7 +32,7 @@ public class Inventory : MonoBehaviour
         ItemSlot slot = Slots.First(slot => !slot.IsOccupied);
         Debug.Log($"slot: {slot.Index}");
 
-        slot.Prefab = itemPrefab;
+        slot.SetPrefab(itemPrefab);
 
         OnPickup?.Invoke(itemPrefab);
 
@@ -52,7 +52,7 @@ public class Inventory : MonoBehaviour
             return false;
         }
 
-        itemSlot.Prefab = null;
+        itemSlot.SetPrefab(null);
         OnRemove?.Invoke(itemSlot.Index);
         return true;
     }
@@ -71,11 +71,26 @@ public class Inventory : MonoBehaviour
         public GameObject Prefab;
         public int Index;
 
+        public Sprite VisibleSprite;
         public bool IsOccupied => Prefab;
 
         public ItemSlot(int index)
         {
             Index = index;
+        }
+
+        public void SetPrefab(GameObject prefab)
+        {
+            Prefab = prefab;
+
+            if (Prefab)
+            {
+                VisibleSprite = prefab.GetComponent<Item>().Data.InventorySprite;
+            }
+            else
+            {
+                VisibleSprite = null;
+            }
         }
     }
 }
