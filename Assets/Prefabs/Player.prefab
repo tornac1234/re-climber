@@ -43,7 +43,7 @@ GameObject:
   m_Layer: 0
   m_Name: RopePlacementPoint
   m_TagString: Untagged
-  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -120,8 +120,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemPlacer
   inventory: {fileID: -4636363008637418038}
   selectedPrefab: {fileID: 0}
-  RopePlaceReference: {fileID: 0}
-  PitonPlaceReference: {fileID: 0}
+  RopePlaceReference: {fileID: 5613059633008231996}
+  PitonPlaceReference: {fileID: 2473356487103264830}
 --- !u!114 &-4636363008637418038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickUp
   itemsAround: []
-  inventory: {fileID: 0}
+  inventory: {fileID: 495535202896014547}
 --- !u!61 &363060333738920693
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -277,7 +277,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDamping: 0
+  m_LinearDamping: 0.6
   m_AngularDamping: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
@@ -303,32 +303,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dce28589247961fee96ff2864cee7761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Movement
-  speed: 100
-  gravity: 3
+  GroundLayerMask: 0
+  speed: 150
   jumpForce: 8
-  IsClimbing: 0
   IsGrounded: 0
   IsJumping: 0
   groundCheckRight: {fileID: 8251224186750257374}
   groundCheckLeft: {fileID: 1095988720944889886}
   velocity: {x: 0, y: 0}
   rb: {fileID: 873226215255645382}
---- !u!1 &7265628428332412931
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2473356487103264830}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
+  climbing: {fileID: 0}
 --- !u!114 &2003540535886879946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,8 +326,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Climbing
   IsClimbing: 0
-  climbingSpeed: 4
+  climbingSpeed: 100
   movement: {fileID: 853018641667651778}
+  rb: {fileID: 873226215255645382}
+--- !u!1 &7265628428332412931
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2473356487103264830}
+  m_Layer: 0
+  m_Name: PitonPlacementPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &2473356487103264830
 Transform:
   m_ObjectHideFlags: 0
