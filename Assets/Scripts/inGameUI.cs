@@ -3,21 +3,31 @@ using UnityEngine.UI;
 
 public class inGameUI : MonoBehaviour
 {
+
+    // Gestion largeur barre de stam
     public float maxWidth = 750f;
     public float aimWidth;
     public float lastWidth;
 
-    public float timeToStam = 2f;
+    // Variables de temps pour faire la barre de stam smooth
+    public float timeToStam = 1f; // S'update en timeToStam secondes
     public float timeLasting;
 
     public Image staminaBar;
 
+    public Image itemSlot;
+
+    public Inventory inventory;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        itemSlot.enabled = false;
         aimWidth = maxWidth;
         maxWidth = staminaBar.GetComponent<RectTransform>().sizeDelta.x;
-        staminaUpdate(0.2f);
+        Inventory.OnPickup += itemPickUp;
+        Inventory.OnRemove += itemUse;
+        
     }
 
 
@@ -39,5 +49,16 @@ public class inGameUI : MonoBehaviour
             timeLasting = timeLasting + Time.deltaTime;
             staminaBar.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, Mathf.Lerp(lastWidth, aimWidth, timeLasting));
         }
+    }
+
+    public void itemPickUp(GameObject _)
+    {
+        itemSlot.enabled = true;
+        itemSlot.GetComponent<SpriteRenderer>().sprite = inventory.Slots[0].VisibleSprite;
+    }
+
+    public void itemUse(int _)
+    {
+        itemSlot.enabled = false;
     }
 }
