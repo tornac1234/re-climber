@@ -41,7 +41,8 @@ public class Menu : MonoBehaviour
     public Slider musicVolumeSlider;
     public Slider environmentVolumeSlider;
     public Slider sfxVolumeSlider;
-    
+
+    public AudioMixer mixer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -105,13 +106,13 @@ public class Menu : MonoBehaviour
 
     public void volumeMainUpdate(float newVolume)
     {
-        volumeMixerUpdate(newVolume, , "mainVolumeParam");
+        // volumeMixerUpdate(newVolume, , "mainVolumeParam");
     }
 
-    public void volumeMixerUpdate(float newVolume, AudioMixer audioMixer, string parameterName)
+    public void volumeMixerUpdate(float newVolume, string parameterName)
     {
         newVolume = Mathf.Lerp(minVolume, maxVolume, newVolume);
-        audioMixer.SetFloat(parameterName, newVolume);
+        mixer.SetFloat(parameterName, newVolume);
     }
 
 }
