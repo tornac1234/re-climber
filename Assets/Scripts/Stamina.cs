@@ -3,8 +3,7 @@ using UnityEngine.Events;
 
 public class Stamina : MonoBehaviour
 {
-    public Movement Movement;
-    public Climbing Climbing;
+    public Climbing climbing;
     public float value = 1F;
     public float timeDeplete = 10F;
     public float timeRefill = 5F;
@@ -37,7 +36,7 @@ public class Stamina : MonoBehaviour
     void Update()
     {
         float dt = Time.deltaTime;
-        bool isClimbing = Climbing.IsClimbing;
+        bool isClimbing = climbing.IsClimbing;
         bool isResting = false; // à relier à Movement.cs. Pour l'instant, on utilise isRest à la place (variable publique modifiable en live)
         if (isRest)
         {
