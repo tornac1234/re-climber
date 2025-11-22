@@ -8,6 +8,7 @@ public class Climbing : MonoBehaviour
     public float climbingSpeed = 100f;
     public Movement movement;
     public Rigidbody2D rb;
+    public bool IsPiton = false;
     public float velocityMag => movement.rb.linearVelocity.magnitude;
 
     private void Start()
