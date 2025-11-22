@@ -5,7 +5,7 @@ public class ItemPickUp : MonoBehaviour
 {
     public List<ItemReference> itemsAround = new();
     private ItemReference closestItem;
-    private Inventory inventory;
+    public Inventory inventory;
 
     public void StumbleIntoItem(ItemReference itemRef)
     {
