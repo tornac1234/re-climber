@@ -11,11 +11,6 @@ public class Stamina : MonoBehaviour
     public bool isRest = false;
     public UnityAction noStamina;
 
-    private void Start()
-    {
-        //climbing += noStamina;
-    }
-
     public void setStamina(float newValue)
     {
         /*

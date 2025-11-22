@@ -1,12 +1,24 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Climbing : MonoBehaviour
 {
     public bool IsClimbing;
+    public Stamina stamina;
     public float climbingSpeed = 100f;
     public Movement movement;
     public Rigidbody2D rb;
     public float velocityMag => movement.rb.linearVelocity.magnitude;
+
+    private void Start()
+    {
+        stamina.noStamina += noStamina;
+    }
+
+    public void OnDestroy()
+    {
+        stamina.noStamina -= noStamina;
+    }
 
     public void SetClimbing(bool isClimbing)
     {
@@ -16,6 +28,11 @@ public class Climbing : MonoBehaviour
         IsClimbing = isClimbing;
         movement.enabled = !isClimbing;
         rb.gravityScale = isClimbing ? 0f : 1f;
+    }
+
+    private void noStamina()
+    {
+        SetClimbing(false);
     }
 
     private void Update()
