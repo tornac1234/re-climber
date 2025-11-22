@@ -22,7 +22,6 @@ public class Movement : MonoBehaviour {
     public void FixedUpdate()
     {
         float horizontalMovement = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-        Debug.Log(horizontalMovement);
 
         if (Input.GetButtonDown("Jump") && (IsGrounded || IsClimbing))
         {
