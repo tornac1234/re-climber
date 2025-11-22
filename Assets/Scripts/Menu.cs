@@ -1,11 +1,11 @@
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-using Unity.VisualScripting;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class Menu : MonoBehaviour
 {
+    public GameObject MainCameraObject;
+
     // Gestion du volume
     public float startVolume = 0.6F; // De base on veut le slider à x%
 
@@ -76,7 +76,9 @@ public class Menu : MonoBehaviour
     // Fonction de changement de scène vers le jeu
     public void play()
     {
+        MainCameraObject.SetActive(false);
         backgroundPanel.SetActive(false);
+        SceneManager.LoadScene("ClementScene", LoadSceneMode.Additive);
     }
 
     public void settings()
