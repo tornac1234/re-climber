@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3906870511105949033}
   - component: {fileID: 2895456524090687728}
   m_Layer: 0
-  m_Name: Ladder
+  m_Name: Rope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a588f232b792d6641a4d2723c12c870c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Item
-  Data: {fileID: 0}
+  Data: {fileID: 11400000, guid: da5e2aa3490657948847ae0dbdf351b5, type: 2}
