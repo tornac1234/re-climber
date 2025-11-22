@@ -54,7 +54,7 @@ public class inGameUI : MonoBehaviour
     public void itemPickUp(GameObject _)
     {
         itemSlot.enabled = true;
-        itemSlot.GetComponent<SpriteRenderer>().sprite = inventory.Slots[0].VisibleSprite;
+        itemSlot.sprite = inventory.Slots[0].VisibleSprite;
     }
 
     public void itemUse(int _)
