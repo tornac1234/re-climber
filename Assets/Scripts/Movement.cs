@@ -3,13 +3,12 @@ using UnityEngine;
 public class Movement : MonoBehaviour {
 
     public float speed = 100f;
-    public float climbSpeed = 4f;
     public float gravity = 3f;
     public float jumpForce =5f;
 
     public bool IsClimbing;
     public bool IsGrounded;
-    public bool IsJumping;
+    public bool IsJumping = false;
     
     public Transform groundCheckRight;
     public Transform groundCheckLeft;
@@ -27,12 +26,15 @@ public class Movement : MonoBehaviour {
         IsGrounded = Physics2D.OverlapArea(groundCheckLeft.position,groundCheckRight.position);
         float horizontalMovement = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
         
-        if (Input.GetButtonDown("Jump") && (IsGrounded || IsClimbing))
+        if (Input.GetButtonDown("Jump") && IsGrounded)
         {
             IsJumping = true;
         }
 
+        
+
         MovePlayer(horizontalMovement);
+        
     }
 
     private void MovePlayer(float horizontalMovement)
@@ -42,6 +44,7 @@ public class Movement : MonoBehaviour {
         
         if (IsJumping)
         {
+
             rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
             IsJumping = false;
         }
