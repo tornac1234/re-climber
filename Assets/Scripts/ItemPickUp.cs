@@ -6,6 +6,8 @@ public class ItemPickUp : MonoBehaviour
     public List<ItemReference> itemsAround = new();
     private ItemReference closestItem;
     public Inventory inventory;
+    public Movement movement;
+    public Climbing climbing;
 
     public void StumbleIntoItem(ItemReference itemRef)
     {
@@ -58,7 +60,8 @@ public class ItemPickUp : MonoBehaviour
     void Update()
     {
         if (closestItem == null) return;
-        if (Input.GetButtonDown("Interact") && inventory.PickupItem(closestItem.reference))
+        bool isOccupied = movement.IsJumping || climbing.IsClimbing;
+        if (Input.GetButtonDown("Interact") && !isOccupied && inventory.PickupItem(closestItem.reference))
         {
             itemsAround.Remove(closestItem);
             Destroy(closestItem.gameObject);
