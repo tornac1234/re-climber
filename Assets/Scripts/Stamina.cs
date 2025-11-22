@@ -9,7 +9,6 @@ public class Stamina : MonoBehaviour
     public float timeRefill = 5F;
     public bool isRest = false;
     public UnityAction noStamina;
-
     public void setStamina(float newValue)
     {
         /*
@@ -35,6 +34,7 @@ public class Stamina : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(value);
         float dt = Time.deltaTime;
         bool isClimbing = climbing.IsClimbing;
         bool isResting = false; // à relier à Movement.cs. Pour l'instant, on utilise isRest à la place (variable publique modifiable en live)
@@ -47,7 +47,7 @@ public class Stamina : MonoBehaviour
         }
         else if (isClimbing)
         {
-            setStamina(value - dt / timeDeplete);
+            setStamina(value - (climbing.velocityMag / (climbing.climbingSpeed/50)) * dt / timeDeplete);
             if (value == 0F)
             {
                 noStamina?.Invoke();
