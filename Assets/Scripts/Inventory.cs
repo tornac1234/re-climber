@@ -46,6 +46,7 @@ public class Inventory : MonoBehaviour
     /// <returns><c>true</c> if there was an item to be removed</returns>
     public bool RemoveItem(ItemSlot itemSlot)
     {
+        Debug.Log($"a {itemSlot.Prefab} {itemSlot.IsOccupied}");
         if (!itemSlot.IsOccupied)
         {
             return false;

@@ -50,7 +50,7 @@ public class ItemPlacer : MonoBehaviour
 
         GameObject instance = GameObject.Instantiate(selectedPrefab);
         
-        ItemData itemData = instance.GetComponent<ItemData>();
+        ItemData itemData = instance.GetComponent<Item>().Data;
         switch (itemData.Name)
         {
             case "Rope":
