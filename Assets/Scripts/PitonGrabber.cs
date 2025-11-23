@@ -47,7 +47,9 @@ public class PitonGrabber : MonoBehaviour
         {
             return;
         }
-        transform.position = Vector2.Lerp(transform.position, grabbedPiton.transform.position + (Vector3)GrabOffset, Time.fixedDeltaTime * GrabSpeed);
+        Vector2 destination = Vector2.Lerp(transform.position, grabbedPiton.transform.position + (Vector3)GrabOffset, Time.fixedDeltaTime * GrabSpeed);
+
+        transform.position = new(destination.x, destination.y, -8.94f);
     }
 
     public void SelectPiton(Piton piton)
