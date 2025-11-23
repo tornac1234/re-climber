@@ -12,6 +12,7 @@ public class Stamina : MonoBehaviour
     public UnityAction noStamina;
 
     public PitonGrabber pitonGrabber;
+    public RopeGrabber ropeGrabber;
 
     public void setStamina(float newValue)
     {
@@ -51,7 +52,7 @@ public class Stamina : MonoBehaviour
         else if (isClimbing)
         {
             float climbSpeedRatio = climbing.velocityMag / (climbing.climbingSpeed / 50);
-            float factorIsRope = climbing.IsRope ? ratioDepleteOnRope : 1F;
+            float factorIsRope = ropeGrabber.GrabbingRope ? ratioDepleteOnRope : 1F;
             float factorIsDashing = climbing.IsDashing ? climbing.dashStaminaMultiplier : 1f;
             setStamina(value - (ratioDepleteIdleClimb + (1 - ratioDepleteIdleClimb) * climbSpeedRatio) * factorIsRope * factorIsDashing * dt / timeDeplete);
             if (value == 0F)

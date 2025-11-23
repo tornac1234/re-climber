@@ -1,10 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class PitonGrabber : MonoBehaviour
 {
-    public List<Piton> closePitons;
+    public List<Piton> closePitons = new();
     public Piton closestPiton;
     public Climbing climbing;
     public Movement movement;

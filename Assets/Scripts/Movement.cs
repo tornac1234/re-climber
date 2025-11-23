@@ -82,6 +82,10 @@ public class Movement : MonoBehaviour
 
     public void TurnPlayer()
     {
-        transform.rotation = Quaternion.Euler(0f, rb.linearVelocityX > 0 ? 0 : 180, 0f);
+        if (rb.linearVelocity.magnitude < 0.01)
+        {
+            return;
+        }
+        transform.rotation = Quaternion.Euler(0f, rb.linearVelocityX >= 0 ? 0 : 180, 0f);
     }
 }

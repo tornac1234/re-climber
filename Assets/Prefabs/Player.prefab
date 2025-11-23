@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 4184617927349558758}
   - component: {fileID: 5524706015828068719}
   - component: {fileID: 6885899725055123851}
+  - component: {fileID: -5426031308573028522}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -313,6 +314,7 @@ MonoBehaviour:
   landCue: {fileID: 5019277746714186467}
   IsGrounded: 0
   IsJumping: 0
+  jumpedAndInAir: 0
   groundCheckRight: {fileID: 8251224186750257374}
   groundCheckLeft: {fileID: 1095988720944889886}
   velocity: {x: 0, y: 0}
@@ -342,7 +344,6 @@ MonoBehaviour:
   movement: {fileID: 853018641667651778}
   rb: {fileID: 873226215255645382}
   IsPiton: 0
-  IsRope: 0
   IsDashing: 0
   DashDirection: {x: 0, y: 0}
 --- !u!114 &6805741570450219017
@@ -364,6 +365,7 @@ MonoBehaviour:
   ratioDepleteIdleClimb: 0.3
   ratioDepleteOnRope: 0.15
   pitonGrabber: {fileID: 5524706015828068719}
+  ropeGrabber: {fileID: -5426031308573028522}
 --- !u!82 &6163512745712362954
 AudioSource:
   m_ObjectHideFlags: 0
@@ -929,6 +931,20 @@ MonoBehaviour:
   climbing: {fileID: 2003540535886879946}
   resp: {fileID: 6990854402608916400}
   animator: {fileID: 4184617927349558758}
+  ropeGrabber: {fileID: -5426031308573028522}
+--- !u!114 &-5426031308573028522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5471282040733424839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ad65059d4a605d47b7d6594512d4f8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RopeGrabber
+  contactRopes: []
 --- !u!1 &7265628428332412931
 GameObject:
   m_ObjectHideFlags: 0

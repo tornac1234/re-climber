@@ -15,7 +15,6 @@ public class Climbing : MonoBehaviour
     public Movement movement;
     public Rigidbody2D rb;
     public bool IsPiton = false;
-    public bool IsRope = false;
     public bool IsDashing = false;
     public Vector2 DashDirection;
     public float velocityMag => movement.rb.linearVelocity.magnitude;
