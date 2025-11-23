@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: PitonData
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   Name: Piton
-  InventorySprite: {fileID: 113082628489013095, guid: 8c17a175a511ca444a1ea9051a47b6d5, type: 3}
+  InventorySprite: {fileID: 21300000, guid: 8c17a175a511ca444a1ea9051a47b6d5, type: 3}
