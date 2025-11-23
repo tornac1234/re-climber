@@ -14,6 +14,21 @@ public class Stamina : MonoBehaviour
     public PitonGrabber pitonGrabber;
     public RopeGrabber ropeGrabber;
 
+    private void Start()
+    {
+        respawn.OnRespawn += FullStamina;
+    }
+
+    private void OnDestroy()
+    {
+        respawn.OnRespawn -= FullStamina;
+    }
+
+    private void FullStamina()
+    {
+        setStamina(1);
+    }
+
     public void setStamina(float newValue)
     {
         /*
