@@ -59,7 +59,7 @@ Material:
     m_Floats:
     - _EnableExternalAlpha: 0
     - _IsActive: 0
-    - _Weight_1: 1.5
+    - _Weight_1: 0.75
     - _ZWrite: 0
     m_Colors:
     - _Color: {r: 0.9583719, g: 1, b: 0, a: 1}
