@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 5019277746714186467}
   - component: {fileID: 4184617927349558758}
   - component: {fileID: 5524706015828068719}
+  - component: {fileID: 6885899725055123851}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -911,6 +912,22 @@ MonoBehaviour:
   grabbedPiton: {fileID: 0}
   GrabSpeed: 10
   GrabOffset: {x: 0.04, y: -1.35}
+--- !u!114 &6885899725055123851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5471282040733424839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83c06a8781e51de4ebb986fd621bc36c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AniimManager
+  movement: {fileID: 853018641667651778}
+  climbing: {fileID: 2003540535886879946}
+  resp: {fileID: 6990854402608916400}
+  animator: {fileID: 4184617927349558758}
 --- !u!1 &7265628428332412931
 GameObject:
   m_ObjectHideFlags: 0
