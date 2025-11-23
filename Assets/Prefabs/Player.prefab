@@ -338,11 +338,11 @@ MonoBehaviour:
   IsClimbing: 0
   stamina: {fileID: 6805741570450219017}
   climbingSpeed: 100
-  climbCue: {fileID: 0}
+  climbCue: {fileID: 6163512745712362954}
   dashSpeedMultiplier: 3
   dashDuration: 0.4
   dashStaminaMultiplier: 1.3
-  dashCue: {fileID: 0}
+  dashCue: {fileID: 8683820392907826675}
   movement: {fileID: 853018641667651778}
   rb: {fileID: 873226215255645382}
   IsPiton: 0

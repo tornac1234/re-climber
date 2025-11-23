@@ -39,7 +39,13 @@ public class Climbing : MonoBehaviour
         movement.enabled = !isClimbing;
         movement.IsGrounded = false;
         rb.gravityScale = isClimbing ? 0f : 1f;
-        climbCue.Play();
+        if (isClimbing)
+        {
+            climbCue.Play();
+        } else
+        {
+            climbCue.Stop();
+        }
     }
 
     public void SetDashing(bool isDashing)
