@@ -13,7 +13,7 @@ public class inGameUI : MonoBehaviour
     public float lastWidth;
     
     // Variables de temps pour faire la barre de stam smooth
-    public float timeToStam = 1f; // S'update en timeToStam secondes
+    public float timeToStam = 1.5f; // S'update en timeToStam secondes
     public float timeLasting;
 
     public Image staminaBar;
@@ -49,9 +49,12 @@ public class inGameUI : MonoBehaviour
      */
     public void staminaUpdate(float staminaRatio)
     {
-        aimWidth = staminaRatio * maxWidth;
-        timeLasting = 0f;
-        lastWidth = staminaBar.GetComponent<RectTransform>().sizeDelta.x;
+        if (aimWidth != staminaRatio * maxWidth)
+        {
+            aimWidth = staminaRatio * maxWidth;
+            timeLasting = 0f;
+            lastWidth = staminaBar.GetComponent<RectTransform>().sizeDelta.x;
+        }
     }
     
     private void Update()
@@ -59,7 +62,7 @@ public class inGameUI : MonoBehaviour
         if (timeLasting < timeToStam)
         {
             timeLasting += Time.deltaTime;
-            staminaBar.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, Mathf.Lerp(lastWidth, aimWidth, timeLasting));
+            staminaBar.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, Mathf.Lerp(lastWidth, aimWidth, timeLasting / timeToStam));
         }
         staminaUpdate(stamina.value);
 

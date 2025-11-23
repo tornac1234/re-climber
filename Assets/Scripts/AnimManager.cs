@@ -12,8 +12,8 @@ public class AniimManager : MonoBehaviour
     {
         animator.SetBool("move", climbing.velocityMag > 0F);
         animator.SetBool("isClimbing", climbing.IsClimbing);
-        animator.SetBool("jump", movement.IsJumping);
-        animator.SetBool("is dead", resp.isDead);
+        animator.SetBool("jump", movement.jumpedAndInAir);
+        animator.SetBool("isDead", resp.isDead);
         animator.SetBool("Dash", climbing.IsDashing);
         animator.SetBool("onPiton", climbing.IsPiton);
         animator.SetBool("onRope", climbing.IsRope);

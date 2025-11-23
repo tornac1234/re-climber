@@ -16,7 +16,8 @@ public class Movement : MonoBehaviour
 
     public bool IsGrounded;
     public bool IsJumping;
-    
+    public bool jumpedAndInAir;
+
     public Transform groundCheckRight;
     public Transform groundCheckLeft;
 
@@ -38,6 +39,7 @@ public class Movement : MonoBehaviour
         if (!oldIsGrounded && IsGrounded)
         {
             landCue.Play();
+            jumpedAndInAir = false;
         }
         if (IsGrounded && !walkCue.isPlaying && rb.linearVelocity.magnitude > playWalkCueVelocityThreshold)
         {
@@ -51,6 +53,7 @@ public class Movement : MonoBehaviour
         {
             IsJumping = true;
             lastJump = Time.time;
+            jumpedAndInAir = true;
         }        
     }
 
