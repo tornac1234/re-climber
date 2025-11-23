@@ -36,7 +36,6 @@ public class inGameUI : MonoBehaviour
         maxWidth = staminaBar.GetComponent<RectTransform>().sizeDelta.x;
         Inventory.OnPickup += itemPickUp;
         Inventory.OnRemove += itemUse;
-        respawn.OnRespawn += timeReset;
         timeResume();
     }
 
