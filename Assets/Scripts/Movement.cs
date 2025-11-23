@@ -12,6 +12,7 @@ public class Movement : MonoBehaviour
     public float JumpCooldown = 0.5f;
     public AudioSource jumpCue;
     private float lastJump = -1f;
+    public AudioSource landCue;
 
     public bool IsGrounded;
     public bool IsJumping;
@@ -32,7 +33,12 @@ public class Movement : MonoBehaviour
 
     public void Update()
     {
+        bool oldIsGrounded = IsGrounded;
         IsGrounded = Physics2D.OverlapArea(groundCheckLeft.position, groundCheckRight.position, GroundLayerMask);
+        if (!oldIsGrounded && IsGrounded)
+        {
+            landCue.Play();
+        }
         if (IsGrounded && !walkCue.isPlaying && rb.linearVelocity.magnitude > playWalkCueVelocityThreshold)
         {
             walkCue.Play();
