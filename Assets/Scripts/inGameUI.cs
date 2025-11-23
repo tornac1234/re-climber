@@ -1,3 +1,6 @@
+using System.ComponentModel;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +11,7 @@ public class inGameUI : MonoBehaviour
     public float maxWidth = 750f;
     public float aimWidth;
     public float lastWidth;
-
+    
     // Variables de temps pour faire la barre de stam smooth
     public float timeToStam = 1f; // S'update en timeToStam secondes
     public float timeLasting;
@@ -16,6 +19,10 @@ public class inGameUI : MonoBehaviour
     public Image staminaBar;
 
     public Image itemSlot;
+
+    public TextMeshProUGUI timerText;
+    public float chrono = 0f;
+    public bool timeStopped;
 
     public Inventory inventory;
 
@@ -29,7 +36,8 @@ public class inGameUI : MonoBehaviour
         maxWidth = staminaBar.GetComponent<RectTransform>().sizeDelta.x;
         Inventory.OnPickup += itemPickUp;
         Inventory.OnRemove += itemUse;
-        
+        respawn.OnRespawn += timeReset;
+        timeResume();
     }
 
 
@@ -41,18 +49,26 @@ public class inGameUI : MonoBehaviour
         aimWidth = staminaRatio * maxWidth;
         timeLasting = 0f;
         lastWidth = staminaBar.GetComponent<RectTransform>().sizeDelta.x;
-
     }
     
     private void Update()
     {
         if (timeLasting < timeToStam)
         {
-            timeLasting = timeLasting + Time.deltaTime;
+            timeLasting += Time.deltaTime;
             staminaBar.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, Mathf.Lerp(lastWidth, aimWidth, timeLasting));
         }
+<<<<<<< Updated upstream
 
         staminaUpdate(stamina.value);
+=======
+        if (!timeStopped)
+        {
+            chrono += Time.deltaTime;
+            timerText.text = Mathf.Floor(chrono).ToString();
+        }
+        
+>>>>>>> Stashed changes
     }
 
     public void itemPickUp(GameObject _)
@@ -64,5 +80,19 @@ public class inGameUI : MonoBehaviour
     public void itemUse(int _)
     {
         itemSlot.enabled = false;
+    }
+
+    public void timeReset()
+    {
+        chrono = 0f;
+    }
+
+    public void timeStop()
+    {
+        timeStopped = true;
+    }
+    public void timeResume()
+    {
+        timeStopped = false;
     }
 }
