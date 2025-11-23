@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
@@ -16,6 +17,20 @@ public class Menu : MonoBehaviour
     // UI panels
     public GameObject backgroundPanel;
     public GameObject settingsPanel;
+    public GameObject deathPanel;
+
+    public TextMeshProUGUI[] deathTexts;
+
+    private string[] deathTextOptions =
+        {
+        "YOU DIED",
+        "SERIOUSLY ?",
+        "TRY AGAIN ?",
+        "I BELIEVE IN YOU",
+        "HUH...",
+        "JUST DO IT",
+        "YOU GOT BETTER",
+        };
 
     // Boutons du mainMenu
     public Button playButton;
@@ -77,8 +92,12 @@ public class Menu : MonoBehaviour
         sfxVolumeSlider.maxValue = maxVolume;
         sfxVolumeSlider.value = startVolume;
 
+        respawn.OnDeath += onDeath;
+
+
         settingsPanel.SetActive(false);
         resumeButton.gameObject.SetActive(false);
+        deathPanel.SetActive(false);
     }
 
     private void OnDestroy()
@@ -142,6 +161,16 @@ public class Menu : MonoBehaviour
     public void restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void onDeath()
+    {
+        string newText = deathTextOptions[Random.Range(0, deathTextOptions.Length)];
+        foreach (TextMeshProUGUI text in deathTexts)
+        {
+            text.text = newText;
+        }
+        deathPanel.SetActive(true);
     }
 
     public void volumeMainUpdate(float newVolume)
