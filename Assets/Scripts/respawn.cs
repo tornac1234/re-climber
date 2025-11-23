@@ -1,5 +1,5 @@
+using System.Collections;
 using UnityEngine;
-using System.Generics;
 
 
 public class respawn : MonoBehaviour
@@ -21,14 +21,14 @@ public class respawn : MonoBehaviour
         if (falldistance < fallThreshold)
         {
             Debug.Log("Respawn");
-            if (climbing.IsGrounded)
+            if (movement.IsGrounded)
             {
                 StartCoroutine(Respawn());
 
             }
             falldistance = 0;
         }
-        if (climbing.IsGrounded)
+        if (movement.IsGrounded)
         {
             falldistance = 0;
         }
@@ -39,9 +39,7 @@ public class respawn : MonoBehaviour
         if (!climbing.IsClimbing && !movement.IsGrounded && stamina.value>0)
         {
             falldistance += Time.deltaTime*rb.linearVelocity.y; 
-        
         }
-                
     }
     IEnumerator Respawn()   //Activer les aniimations correctes
     {   
