@@ -314,7 +314,7 @@ MonoBehaviour:
   GroundLayerMask: 0
   speed: 150
   jumpForce: 5
-  Cooldown: 0.5
+  JumpCooldown: 0.5
   IsGrounded: 0
   IsJumping: 0
   groundCheckRight: {fileID: 8251224186750257374}
@@ -338,9 +338,11 @@ MonoBehaviour:
   IsClimbing: 0
   stamina: {fileID: 6805741570450219017}
   climbingSpeed: 100
+  climbCue: {fileID: 0}
   dashSpeedMultiplier: 3
   dashDuration: 0.4
   dashStaminaMultiplier: 1.3
+  dashCue: {fileID: 0}
   movement: {fileID: 853018641667651778}
   rb: {fileID: 873226215255645382}
   IsPiton: 0
@@ -380,7 +382,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -477,7 +479,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -765,6 +767,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e4e7d58e01871d8a644b9a2ef0f934, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  stamina: {fileID: 6805741570450219017}
+  IsClimbing: 0
+  IsGrounded: 0
+  fallThreshold: -10
+  falldistance: 0
+  rb: {fileID: 873226215255645382}
 --- !u!1 &7265628428332412931
 GameObject:
   m_ObjectHideFlags: 0

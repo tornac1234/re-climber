@@ -6,9 +6,11 @@ public class Climbing : MonoBehaviour
     public bool IsClimbing;
     public Stamina stamina;
     public float climbingSpeed = 100f;
+    public AudioSource climbCue;
     public float dashSpeedMultiplier = 3f;
     public float dashDuration = 0.4f;
     public float dashStaminaMultiplier = 1.5f;
+    public AudioSource dashCue;
     private float dashStartingStamina;
     public Movement movement;
     public Rigidbody2D rb;
@@ -37,6 +39,7 @@ public class Climbing : MonoBehaviour
         movement.enabled = !isClimbing;
         movement.IsGrounded = false;
         rb.gravityScale = isClimbing ? 0f : 1f;
+        climbCue.Play();
     }
 
     public void SetDashing(bool isDashing)
@@ -47,6 +50,7 @@ public class Climbing : MonoBehaviour
             DashDirection = GetNormalizedDirection();
             IsDashing = true;
             dashStartingStamina = stamina.value;
+            dashCue.Play();
         }
     }
 
@@ -80,6 +84,14 @@ public class Climbing : MonoBehaviour
                 SetClimbing(true);
             }
             return;
+        }
+        if (velocityMag == 0f)
+        {
+            climbCue.Pause();
+        }
+        else if (!dashCue.isPlaying)
+        {
+            climbCue.Play();
         }
         if (!IsDashing && Input.GetButtonUp("Climb"))
         {
