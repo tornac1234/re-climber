@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 8683820392907826675}
   - component: {fileID: 6990854402608916400}
   - component: {fileID: 5019277746714186467}
+  - component: {fileID: 5524706015828068719}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -866,6 +867,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5524706015828068719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5471282040733424839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b96d6aee915cb74cad6ff9822f3acb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PitonGrabber
 --- !u!1 &7265628428332412931
 GameObject:
   m_ObjectHideFlags: 0
