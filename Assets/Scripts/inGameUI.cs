@@ -58,17 +58,12 @@ public class inGameUI : MonoBehaviour
             timeLasting += Time.deltaTime;
             staminaBar.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, Mathf.Lerp(lastWidth, aimWidth, timeLasting));
         }
-<<<<<<< Updated upstream
-
         staminaUpdate(stamina.value);
-=======
         if (!timeStopped)
         {
             chrono += Time.deltaTime;
             timerText.text = Mathf.Floor(chrono).ToString();
         }
-        
->>>>>>> Stashed changes
     }
 
     public void itemPickUp(GameObject _)
