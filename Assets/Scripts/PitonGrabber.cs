@@ -1,13 +1,20 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PitonGrabber : MonoBehaviour
 {
     public List<Piton> closePitons;
     public Piton closestPiton;
     public Climbing climbing;
+    public Movement movement;
+    public Rigidbody2D rb;
 
-    public bool isGrabbing;
+    public bool isGrabbing => grabbedPiton;
+    public Piton grabbedPiton;
+
+    public float GrabSpeed = 1f;
+    public Vector2 GrabOffset;
 
     public void Update()
     {
@@ -17,28 +24,41 @@ public class PitonGrabber : MonoBehaviour
             if (closestPiton)
             {
                 DeselectPiton();
+                closestPiton = null;
             }
             return;
         }
 
         Piton closest = FindClosestPiton();
 
-        if (closestPiton != closest)
+        if (closest != closestPiton)
         {
-            DeselectPiton();
+            if (closestPiton)
+            {
+                DeselectPiton();
+            }
+            SelectPiton(closest);
+            closestPiton = closest;
         }
-        SelectPiton(closest);
-        closestPiton = closest;
+    }
+
+    public void FixedUpdate()
+    {
+        if (!grabbedPiton)
+        {
+            return;
+        }
+        transform.position = Vector2.Lerp(transform.position, grabbedPiton.transform.position + (Vector3)GrabOffset, Time.fixedDeltaTime * GrabSpeed);
     }
 
     public void SelectPiton(Piton piton)
     {
-        piton.GetComponent<SpriteRenderer>().material.SetInteger("_IsActive", 1);
+        piton.GetComponent<SpriteRenderer>().material.SetInt("_IsActive", 1);
     }
 
     public void DeselectPiton()
     {
-        closestPiton.GetComponent<SpriteRenderer>().material.SetInteger("_IsActive", 0);
+        closestPiton.GetComponent<SpriteRenderer>().material.SetInt("_IsActive", 0);
     }
 
     public Piton FindClosestPiton()
@@ -60,7 +80,7 @@ public class PitonGrabber : MonoBehaviour
 
     public void ManageInput()
     {
-        if (Input.GetButtonDown("Interact"))
+        if (closestPiton && Input.GetButtonDown("Interact"))
         {
             if (isGrabbing)
             {
@@ -75,15 +95,21 @@ public class PitonGrabber : MonoBehaviour
 
     public void GrabClosest()
     {
-        isGrabbing = true;
+        grabbedPiton = closestPiton;
         // TODO: add animation to go towards closest
         climbing.enabled = false;
+        movement.enabled = false;
+        rb.gravityScale = 0f;
+        closestPiton.GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.green);
     }
 
     public void UngrabClosest()
     {
-        isGrabbing = false;
+        grabbedPiton = null;
         climbing.enabled = true;
+        movement.enabled = true;
+        rb.gravityScale = 1f;
+        closestPiton.GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.yellow);
         // TODO: switch back to normal animation
     }
 }
