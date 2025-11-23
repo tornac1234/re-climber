@@ -5,8 +5,10 @@ public class Movement : MonoBehaviour
     public int GroundLayerMask;
 
     public float speed = 100f;
+    public AudioSource walkCue;
     public float jumpForce = 5f;
     public float JumpCooldown = 0.5f;
+    public AudioSource jumpCue;
     private float lastJump = -1f;
 
     public bool IsGrounded;
@@ -29,6 +31,7 @@ public class Movement : MonoBehaviour
     public void Update()
     {
         IsGrounded = Physics2D.OverlapArea(groundCheckLeft.position, groundCheckRight.position, GroundLayerMask);
+        walkCue.playOnAwake = IsGrounded;
 
         if (!IsJumping && (Time.time - lastJump >= JumpCooldown) && Input.GetButtonDown("Jump") && IsGrounded && stamina.consumeStamina(0.1f))
         {
@@ -48,6 +51,7 @@ public class Movement : MonoBehaviour
     {
         if (IsJumping)
         {
+            jumpCue.Play();
             rb.AddForce(new Vector2(horizontalMovement, jumpForce), ForceMode2D.Impulse);
                                                               
             IsJumping = false;
