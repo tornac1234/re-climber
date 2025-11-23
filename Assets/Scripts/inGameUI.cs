@@ -21,7 +21,9 @@ public class inGameUI : MonoBehaviour
     public Image itemSlot;
 
     public TextMeshProUGUI timerText;
-    public float chrono = 0f;
+    public TextMeshProUGUI timerCurrentText;
+    public float chronoTotal = 0f;
+    public float chronoCurrent = 0f;
     public bool timeStopped;
 
     public Inventory inventory;
@@ -36,6 +38,8 @@ public class inGameUI : MonoBehaviour
         maxWidth = staminaBar.GetComponent<RectTransform>().sizeDelta.x;
         Inventory.OnPickup += itemPickUp;
         Inventory.OnRemove += itemUse;
+        respawn.OnRespawn += timeReset;
+        respawn.OnDeath += timeStop;
         timeResume();
     }
 
@@ -58,10 +62,13 @@ public class inGameUI : MonoBehaviour
             staminaBar.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, Mathf.Lerp(lastWidth, aimWidth, timeLasting));
         }
         staminaUpdate(stamina.value);
+
+        chronoTotal += Time.deltaTime;
+        timerText.text = Mathf.Floor(chronoTotal).ToString();
         if (!timeStopped)
         {
-            chrono += Time.deltaTime;
-            timerText.text = Mathf.Floor(chrono).ToString();
+            chronoCurrent += Time.deltaTime;
+            timerCurrentText.text = Mathf.Floor(chronoCurrent).ToString();
         }
     }
 
@@ -78,7 +85,8 @@ public class inGameUI : MonoBehaviour
 
     public void timeReset()
     {
-        chrono = 0f;
+        chronoCurrent = 0f;
+        timeResume();
     }
 
     public void timeStop()
