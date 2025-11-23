@@ -93,11 +93,12 @@ public class Menu : MonoBehaviour
         sfxVolumeSlider.value = startVolume;
 
         respawn.OnDeath += onDeath;
-
+        respawn.OnRespawn += onDeath;
 
         settingsPanel.SetActive(false);
         resumeButton.gameObject.SetActive(false);
         deathPanel.SetActive(false);
+
     }
 
     private void OnDestroy()
@@ -152,7 +153,7 @@ public class Menu : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !deathPanel.activeSelf)
         {
             echap();
         }
@@ -165,12 +166,16 @@ public class Menu : MonoBehaviour
 
     public void onDeath()
     {
-        string newText = deathTextOptions[Random.Range(0, deathTextOptions.Length)];
-        foreach (TextMeshProUGUI text in deathTexts)
+        if (!deathPanel.activeSelf)
         {
-            text.text = newText;
+            string newText = deathTextOptions[Random.Range(0, deathTextOptions.Length)];
+            foreach (TextMeshProUGUI text in deathTexts)
+            {
+                text.text = newText;
+            }
         }
-        deathPanel.SetActive(true);
+        
+        deathPanel.SetActive(!deathPanel.activeSelf);
     }
 
     public void volumeMainUpdate(float newVolume)
