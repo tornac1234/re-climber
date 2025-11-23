@@ -44,7 +44,7 @@ public class Climbing : MonoBehaviour
             climbCue.Play();
         } else
         {
-            climbCue.Stop();
+            climbCue.Pause();
         }
     }
 

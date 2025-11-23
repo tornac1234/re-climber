@@ -31,7 +31,13 @@ public class Movement : MonoBehaviour
     public void Update()
     {
         IsGrounded = Physics2D.OverlapArea(groundCheckLeft.position, groundCheckRight.position, GroundLayerMask);
-        walkCue.playOnAwake = IsGrounded;
+        if (IsGrounded && !walkCue.isPlaying && velocity.magnitude > 0F)
+        {
+            walkCue.Play();
+        } else if (!IsGrounded && walkCue.isPlaying)
+        {
+            walkCue.Pause();
+        }
 
         if (!IsJumping && (Time.time - lastJump >= JumpCooldown) && Input.GetButtonDown("Jump") && IsGrounded && stamina.consumeStamina(0.1f))
         {
