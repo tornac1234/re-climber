@@ -309,6 +309,7 @@ MonoBehaviour:
   GroundLayerMask: 0
   speed: 150
   jumpForce: 8
+  Cooldown: 0.5
   IsGrounded: 0
   IsJumping: 0
   groundCheckRight: {fileID: 8251224186750257374}
@@ -332,10 +333,15 @@ MonoBehaviour:
   IsClimbing: 0
   stamina: {fileID: 6805741570450219017}
   climbingSpeed: 100
+  dashSpeedMultiplier: 3
+  dashDuration: 0.4
+  dashStaminaMultiplier: 1.3
   movement: {fileID: 853018641667651778}
   rb: {fileID: 873226215255645382}
   IsPiton: 0
   IsRope: 0
+  IsDashing: 0
+  DashDirection: {x: 0, y: 0}
 --- !u!114 &6805741570450219017
 MonoBehaviour:
   m_ObjectHideFlags: 0
