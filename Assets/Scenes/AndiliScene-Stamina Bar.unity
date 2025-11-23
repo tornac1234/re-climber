@@ -317,7 +317,7 @@ MonoBehaviour:
   timeLasting: 0
   staminaBar: {fileID: 119001411}
   itemSlot: {fileID: 1516544551}
-  inventory: {fileID: 0}
+  inventory: {fileID: -4636363008637418038, guid: f23d93ac1776a174c8042dadfe2aec36, type: 3}
 --- !u!1 &227804481
 GameObject:
   m_ObjectHideFlags: 0
