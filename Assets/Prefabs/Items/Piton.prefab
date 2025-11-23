@@ -141,7 +141,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 1
+  m_Radius: 0.58
 --- !u!114 &3775030506514196948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,4 +154,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c650df4108d6144d99337f89ed2424f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Piton
-  isGrabbed: 0

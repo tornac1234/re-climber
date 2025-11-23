@@ -19,6 +19,8 @@ public class inGameUI : MonoBehaviour
 
     public Inventory inventory;
 
+    public Stamina stamina;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -49,6 +51,8 @@ public class inGameUI : MonoBehaviour
             timeLasting = timeLasting + Time.deltaTime;
             staminaBar.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, Mathf.Lerp(lastWidth, aimWidth, timeLasting));
         }
+
+        staminaUpdate(stamina.value);
     }
 
     public void itemPickUp(GameObject _)

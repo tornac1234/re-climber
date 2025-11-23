@@ -105,7 +105,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 15, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1095988720944889886}
@@ -252,7 +252,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.3388974}
   m_SpriteTilingProperty:
     border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
     pivot: {x: 0.5, y: 0.5}
@@ -262,7 +262,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.15, y: 0.15}
+  m_Size: {x: 0.15, y: 0.6007227}
   m_EdgeRadius: 0.1
 --- !u!50 &873226215255645382
 Rigidbody2D:
@@ -362,6 +362,7 @@ MonoBehaviour:
   timeRefill: 5
   ratioDepleteIdleClimb: 0.3
   ratioDepleteOnRope: 0.15
+  pitonGrabber: {fileID: 5524706015828068719}
 --- !u!82 &6163512745712362954
 AudioSource:
   m_ObjectHideFlags: 0
@@ -902,6 +903,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b96d6aee915cb74cad6ff9822f3acb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PitonGrabber
+  closePitons: []
+  closestPiton: {fileID: 0}
+  climbing: {fileID: 2003540535886879946}
+  isGrabbing: 0
 --- !u!1 &7265628428332412931
 GameObject:
   m_ObjectHideFlags: 0
