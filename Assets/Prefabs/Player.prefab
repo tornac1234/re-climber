@@ -906,7 +906,11 @@ MonoBehaviour:
   closePitons: []
   closestPiton: {fileID: 0}
   climbing: {fileID: 2003540535886879946}
-  isGrabbing: 0
+  movement: {fileID: 853018641667651778}
+  rb: {fileID: 873226215255645382}
+  grabbedPiton: {fileID: 0}
+  GrabSpeed: 10
+  GrabOffset: {x: 0.04, y: -1.35}
 --- !u!1 &7265628428332412931
 GameObject:
   m_ObjectHideFlags: 0
