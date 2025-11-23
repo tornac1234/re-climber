@@ -62,6 +62,21 @@ public class Menu : MonoBehaviour
         mainVolumeSlider.maxValue = maxVolume;
         mainVolumeSlider.value = startVolume;
 
+        musicVolumeSlider.onValueChanged.AddListener(volumeMusicUpdate);
+        musicVolumeSlider.minValue = minVolume;
+        musicVolumeSlider.maxValue = maxVolume;
+        musicVolumeSlider.value = startVolume;
+
+        environmentVolumeSlider.onValueChanged.AddListener(volumeEnvironmentUpdate);
+        environmentVolumeSlider.minValue = minVolume;
+        environmentVolumeSlider.maxValue = maxVolume;
+        environmentVolumeSlider.value = startVolume;
+
+        sfxVolumeSlider.onValueChanged.AddListener(volumeSFXUpdate);
+        sfxVolumeSlider.minValue = minVolume;
+        sfxVolumeSlider.maxValue = maxVolume;
+        sfxVolumeSlider.value = startVolume;
+
         settingsPanel.SetActive(false);
         resumeButton.gameObject.SetActive(false);
     }
@@ -131,12 +146,23 @@ public class Menu : MonoBehaviour
 
     public void volumeMainUpdate(float newVolume)
     {
-        // volumeMixerUpdate(newVolume, , "mainVolumeParam");
+        volumeMixerUpdate(newVolume, "mainVolumeParam");
+    }
+    public void volumeMusicUpdate(float newVolume)
+    {
+        volumeMixerUpdate(newVolume, "musicVolumeParam");
+    }
+    public void volumeEnvironmentUpdate(float newVolume)
+    {
+        volumeMixerUpdate(newVolume, "environmentVolumeParam");
+    }
+    public void volumeSFXUpdate(float newVolume)
+    {
+        volumeMixerUpdate(newVolume, "sfxVolumeParam");
     }
 
     public void volumeMixerUpdate(float newVolume, string parameterName)
     {
-        newVolume = Mathf.Lerp(minVolume, maxVolume, newVolume);
         mixer.SetFloat(parameterName, newVolume);
     }
 
