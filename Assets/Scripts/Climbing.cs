@@ -42,9 +42,10 @@ public class Climbing : MonoBehaviour
         if (isClimbing)
         {
             climbCue.Play();
+            movement.walkCue.Pause();
         } else
         {
-            climbCue.Stop();
+            climbCue.Pause();
         }
     }
 

@@ -10,6 +10,9 @@ public class ItemPlacer : MonoBehaviour
     public Transform RopePlaceReference;
     public Transform PitonPlaceReference;
 
+    public Climbing climbing;
+    public Movement movement;
+
     public void Start()
     {
         Inventory.OnPickup += SelectPrefab;
@@ -46,11 +49,28 @@ public class ItemPlacer : MonoBehaviour
         {
             return;
         }
-        inventory.RemoveItem(0);
+        ItemData itemData = selectedPrefab.GetComponent<Item>().Data;
+
+        switch (itemData.Name)
+        {
+            case "Rope":
+                if (!movement.IsGrounded)
+                {
+                    return;
+                }
+                break;
+            case "Piton":
+                if (!climbing.IsClimbing)
+                {
+                    return;
+                }
+                break;
+        }
 
         GameObject instance = GameObject.Instantiate(selectedPrefab);
+
+        inventory.RemoveItem(0);
         
-        ItemData itemData = instance.GetComponent<Item>().Data;
         switch (itemData.Name)
         {
             case "Rope":
@@ -58,7 +78,7 @@ public class ItemPlacer : MonoBehaviour
                 break;
 
             case "Piton":
-                inventory.transform.position = PitonPlaceReference.position;
+                instance.transform.position = PitonPlaceReference.position;
                 break;
         }
     }

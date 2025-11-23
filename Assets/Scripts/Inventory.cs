@@ -24,7 +24,7 @@ public class Inventory : MonoBehaviour
     public bool PickupItem(GameObject itemPrefab)
     {
         // Early detection to avoid problems, even though the check should be handled by the calling script
-        if (CanPickup())
+        if (!CanPickup())
         {
             return false;
         }
@@ -33,7 +33,6 @@ public class Inventory : MonoBehaviour
 
         slot.SetPrefab(itemPrefab);
         OnPickup?.Invoke(itemPrefab);
-        Debug.Log("filled item prefab " + itemPrefab.name);
 
         return true;
     }
@@ -46,7 +45,6 @@ public class Inventory : MonoBehaviour
     /// <returns><c>true</c> if there was an item to be removed</returns>
     public bool RemoveItem(ItemSlot itemSlot)
     {
-        Debug.Log($"a {itemSlot.Prefab} {itemSlot.IsOccupied}");
         if (!itemSlot.IsOccupied)
         {
             return false;
@@ -72,7 +70,7 @@ public class Inventory : MonoBehaviour
         public int Index;
 
         public Sprite VisibleSprite;
-        public bool IsOccupied => Prefab;
+        public bool IsOccupied;
 
         public ItemSlot(int index)
         {
@@ -82,6 +80,7 @@ public class Inventory : MonoBehaviour
         public void SetPrefab(GameObject prefab)
         {
             Prefab = prefab;
+            IsOccupied = prefab;
 
             if (Prefab)
             {

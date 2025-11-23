@@ -5,9 +5,14 @@ public class Movement : MonoBehaviour
     public int GroundLayerMask;
 
     public float speed = 100f;
+    public AudioSource walkCue;
+    private float playWalkCueVelocityThreshold = 0.25F;
+
     public float jumpForce = 5f;
     public float JumpCooldown = 0.5f;
+    public AudioSource jumpCue;
     private float lastJump = -1f;
+    public AudioSource landCue;
 
     public bool IsGrounded;
     public bool IsJumping;
@@ -28,7 +33,19 @@ public class Movement : MonoBehaviour
 
     public void Update()
     {
+        bool oldIsGrounded = IsGrounded;
         IsGrounded = Physics2D.OverlapArea(groundCheckLeft.position, groundCheckRight.position, GroundLayerMask);
+        if (!oldIsGrounded && IsGrounded)
+        {
+            landCue.Play();
+        }
+        if (IsGrounded && !walkCue.isPlaying && rb.linearVelocity.magnitude > playWalkCueVelocityThreshold)
+        {
+            walkCue.Play();
+        } else if (walkCue.isPlaying && (!IsGrounded || rb.linearVelocity.magnitude < playWalkCueVelocityThreshold))
+        {
+            walkCue.Pause();
+        }
 
         if (!IsJumping && (Time.time - lastJump >= JumpCooldown) && Input.GetButtonDown("Jump") && IsGrounded && stamina.consumeStamina(0.1f))
         {
@@ -48,6 +65,7 @@ public class Movement : MonoBehaviour
     {
         if (IsJumping)
         {
+            jumpCue.Play();
             rb.AddForce(new Vector2(horizontalMovement, jumpForce), ForceMode2D.Impulse);
                                                               
             IsJumping = false;
