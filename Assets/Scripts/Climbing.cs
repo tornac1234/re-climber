@@ -95,7 +95,7 @@ public class Climbing : MonoBehaviour
         {
             climbCue.Pause();
         }
-        else if (!dashCue.isPlaying)
+        else if (!climbCue.isPlaying)
         {
             climbCue.Play();
         }
