@@ -80,7 +80,7 @@ public class PitonGrabber : MonoBehaviour
 
     public void ManageInput()
     {
-        if (closestPiton && Input.GetButtonDown("Interact"))
+        if (closestPiton && climbing.IsClimbing && Input.GetButtonDown("Interact"))
         {
             if (isGrabbing)
             {
@@ -99,7 +99,6 @@ public class PitonGrabber : MonoBehaviour
         // TODO: add animation to go towards closest
         climbing.enabled = false;
         movement.enabled = false;
-        rb.gravityScale = 0f;
         closestPiton.GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.green);
     }
 
@@ -108,7 +107,6 @@ public class PitonGrabber : MonoBehaviour
         grabbedPiton = null;
         climbing.enabled = true;
         movement.enabled = true;
-        rb.gravityScale = 1f;
         closestPiton.GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.yellow);
         // TODO: switch back to normal animation
     }
