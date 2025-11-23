@@ -363,7 +363,7 @@ MonoBehaviour:
   maxWidth: 650
   aimWidth: 650
   lastWidth: 0
-  timeToStam: 1
+  timeToStam: 0.8
   timeLasting: 0
   staminaBar: {fileID: 119001411}
   itemSlot: {fileID: 1516544551}
