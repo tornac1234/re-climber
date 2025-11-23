@@ -6,6 +6,8 @@ public class Movement : MonoBehaviour
 
     public float speed = 100f;
     public AudioSource walkCue;
+    private float playWalkCueVelocityThreshold = 0.25F;
+
     public float jumpForce = 5f;
     public float JumpCooldown = 0.5f;
     public AudioSource jumpCue;
@@ -31,10 +33,10 @@ public class Movement : MonoBehaviour
     public void Update()
     {
         IsGrounded = Physics2D.OverlapArea(groundCheckLeft.position, groundCheckRight.position, GroundLayerMask);
-        if (IsGrounded && !walkCue.isPlaying && velocity.magnitude > 0F)
+        if (IsGrounded && !walkCue.isPlaying && rb.linearVelocity.magnitude > playWalkCueVelocityThreshold)
         {
             walkCue.Play();
-        } else if (!IsGrounded && walkCue.isPlaying)
+        } else if (walkCue.isPlaying && (!IsGrounded || rb.linearVelocity.magnitude < playWalkCueVelocityThreshold))
         {
             walkCue.Pause();
         }

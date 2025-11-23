@@ -19,6 +19,7 @@ public class Menu : MonoBehaviour
 
     // Boutons du mainMenu
     public Button playButton;
+    public Button resumeButton;
     public Button settingsButton;
     public Button quitButton;
 
@@ -50,6 +51,7 @@ public class Menu : MonoBehaviour
         playButton.onClick.AddListener(play);
         settingsButton.onClick.AddListener(settings);
         quitButton.onClick.AddListener(Application.Quit);
+        resumeButton.onClick.AddListener(play);
 
         leaveSettingsButton.onClick.AddListener(settings);
 
@@ -60,7 +62,23 @@ public class Menu : MonoBehaviour
         mainVolumeSlider.maxValue = maxVolume;
         mainVolumeSlider.value = startVolume;
 
-        //settingsPanel.SetActive(false);
+        musicVolumeSlider.onValueChanged.AddListener(volumeMusicUpdate);
+        musicVolumeSlider.minValue = minVolume;
+        musicVolumeSlider.maxValue = maxVolume;
+        musicVolumeSlider.value = startVolume;
+
+        environmentVolumeSlider.onValueChanged.AddListener(volumeEnvironmentUpdate);
+        environmentVolumeSlider.minValue = minVolume;
+        environmentVolumeSlider.maxValue = maxVolume;
+        environmentVolumeSlider.value = startVolume;
+
+        sfxVolumeSlider.onValueChanged.AddListener(volumeSFXUpdate);
+        sfxVolumeSlider.minValue = minVolume;
+        sfxVolumeSlider.maxValue = maxVolume;
+        sfxVolumeSlider.value = startVolume;
+
+        settingsPanel.SetActive(false);
+        resumeButton.gameObject.SetActive(false);
     }
 
     private void OnDestroy()
@@ -68,6 +86,7 @@ public class Menu : MonoBehaviour
         playButton.onClick.RemoveListener(play);
         settingsButton.onClick.RemoveListener(settings);
         quitButton.onClick.RemoveListener(Application.Quit);
+        resumeButton.onClick.RemoveListener(play);
 
 
         leaveSettingsButton.onClick.RemoveListener(settings);
@@ -76,9 +95,32 @@ public class Menu : MonoBehaviour
     // Fonction de changement de scène vers le jeu
     public void play()
     {
-        MainCameraObject.SetActive(false);
+        if (playButton.IsActive())
+        {
+            playButton.gameObject.SetActive(false);
+            resumeButton.gameObject.SetActive(true);
+            SceneManager.LoadScene("ClementScene", LoadSceneMode.Additive);
+        }
         backgroundPanel.SetActive(false);
-        SceneManager.LoadScene("ClementScene", LoadSceneMode.Additive);
+        MainCameraObject.SetActive(false);
+    }
+
+    
+
+    public void echap()
+    {
+        if (settingsPanel.activeSelf || playButton.IsActive())
+        {
+            settingsPanel.SetActive(!settingsPanel.activeSelf);
+        }
+        else if (backgroundPanel.activeSelf)
+        {
+            play();
+        }
+        else
+        {
+            backgroundPanel.SetActive(true);
+        }
     }
 
     public void settings()
@@ -87,17 +129,13 @@ public class Menu : MonoBehaviour
         {
             settingsPanel.SetActive(!settingsPanel.activeSelf);
         }
-        else
-        {
-            backgroundPanel.SetActive(true);
-        }
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            settings();
+            echap();
         }
     }
 
@@ -108,12 +146,23 @@ public class Menu : MonoBehaviour
 
     public void volumeMainUpdate(float newVolume)
     {
-        // volumeMixerUpdate(newVolume, , "mainVolumeParam");
+        volumeMixerUpdate(newVolume, "mainVolumeParam");
+    }
+    public void volumeMusicUpdate(float newVolume)
+    {
+        volumeMixerUpdate(newVolume, "musicVolumeParam");
+    }
+    public void volumeEnvironmentUpdate(float newVolume)
+    {
+        volumeMixerUpdate(newVolume, "environmentVolumeParam");
+    }
+    public void volumeSFXUpdate(float newVolume)
+    {
+        volumeMixerUpdate(newVolume, "sfxVolumeParam");
     }
 
     public void volumeMixerUpdate(float newVolume, string parameterName)
     {
-        newVolume = Mathf.Lerp(minVolume, maxVolume, newVolume);
         mixer.SetFloat(parameterName, newVolume);
     }
 
