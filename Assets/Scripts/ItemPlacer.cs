@@ -13,6 +13,8 @@ public class ItemPlacer : MonoBehaviour
     public Climbing climbing;
     public Movement movement;
 
+    public AudioSource audioSource;
+
     public void Start()
     {
         Inventory.OnPickup += SelectPrefab;
@@ -79,6 +81,7 @@ public class ItemPlacer : MonoBehaviour
 
             case "Piton":
                 instance.transform.position = PitonPlaceReference.position;
+                audioSource.Play();
                 break;
         }
     }
