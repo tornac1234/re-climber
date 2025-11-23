@@ -12,6 +12,7 @@ public class respawn : MonoBehaviour
     public float deathCooldown = 3f;
     public bool isDead;
     public Rigidbody2D rb;
+    public Transform RespawnReference;
 
     private void Start()    
     {
@@ -51,7 +52,7 @@ public class respawn : MonoBehaviour
         movement.enabled = false;
 
         yield return new WaitForSeconds(deathCooldown);
-        transform.position = new Vector3(0f, -2.5f, 0f);
+        transform.position = RespawnReference.position;
         fallDistance = 0;
 
         isDead = false;
