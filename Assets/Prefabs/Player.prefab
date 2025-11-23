@@ -128,6 +128,8 @@ MonoBehaviour:
   selectedPrefab: {fileID: 0}
   RopePlaceReference: {fileID: 5613059633008231996}
   PitonPlaceReference: {fileID: 2473356487103264830}
+  climbing: {fileID: 0}
+  movement: {fileID: 0}
 --- !u!114 &-4636363008637418038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -772,10 +774,12 @@ MonoBehaviour:
   stamina: {fileID: 6805741570450219017}
   climbing: {fileID: 2003540535886879946}
   movement: {fileID: 853018641667651778}
-  fallThreshold: -0.05
-  falldistance: 0
+  fallThreshold: -3
+  fallDistance: 0
   deathCooldown: 3
+  isDead: 0
   rb: {fileID: 873226215255645382}
+  RespawnReference: {fileID: 0}
 --- !u!1 &7265628428332412931
 GameObject:
   m_ObjectHideFlags: 0
