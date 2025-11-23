@@ -1,12 +1,13 @@
 using UnityEngine;
 
-public Stamina stamina;
-public bool IsClimbing;
-public bool IsGrounded;
-public float fallThreshold = -10f;
-public float falldistance;
+
 public class respawn : MonoBehaviour
 {
+    public Stamina stamina;
+    public bool IsClimbing;
+    public bool IsGrounded;
+    public float fallThreshold = -10f;
+    public float falldistance;
     void Start()
     {
         
