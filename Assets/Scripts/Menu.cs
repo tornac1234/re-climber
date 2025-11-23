@@ -119,7 +119,7 @@ public class Menu : MonoBehaviour
         {
             playButton.gameObject.SetActive(false);
             resumeButton.gameObject.SetActive(true);
-            SceneManager.LoadScene("ClementScene", LoadSceneMode.Additive);
+            SceneManager.LoadScene("FinalClementScene", LoadSceneMode.Additive);
         }
         backgroundPanel.SetActive(false);
         MainCameraObject.SetActive(false);
