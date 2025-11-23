@@ -54,7 +54,7 @@ public class Movement : MonoBehaviour
             IsJumping = true;
             lastJump = Time.time;
             jumpedAndInAir = true;
-        }        
+        }
     }
 
     public void FixedUpdate()
@@ -62,6 +62,7 @@ public class Movement : MonoBehaviour
         float horizontalMovement = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
 
         MovePlayer(horizontalMovement);
+        TurnPlayer();
     }
 
     private void MovePlayer(float horizontalMovement)
@@ -77,5 +78,10 @@ public class Movement : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(horizontalMovement, rb.linearVelocity.y);
         }
+    }
+
+    public void TurnPlayer()
+    {
+        transform.rotation = Quaternion.Euler(0f, rb.linearVelocityX > 0 ? 0 : 180, 0f);
     }
 }
