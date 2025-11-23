@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3906870511105949033}
   - component: {fileID: 2895456524090687728}
   - component: {fileID: -1404975086605257674}
+  - component: {fileID: -3873129158872133408}
   m_Layer: 0
   m_Name: Rope
   m_TagString: Untagged
@@ -59,6 +60,19 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
+--- !u!114 &-3873129158872133408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6502620794867488109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63a1ab3cb0e3ae4f93d41e50b9cee27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemLife
+  lives: 3
 --- !u!1 &7361696739530274891
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,8 +118,8 @@ Tilemap:
   - first: {x: 0, y: -2, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -135,17 +149,17 @@ Tilemap:
   m_TileAssetArray:
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 8ffb2b7b5a270c14fa636f33d726141f, type: 2}
-  - m_RefCount: 1
+  - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: a12fd414db17e744fb1e0abc9b48e545, type: 2}
-  - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: 78eb892c1fb82ad4892fe0ed64208104, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 25456782830a04b4fb0c653965528cf1, type: 3}
-  - m_RefCount: 1
+  - m_RefCount: 2
     m_Data: {fileID: 21300000, guid: 2abfadbc566244a4cb77be2664f8e53b, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: e59b517b5bb79684ea59ea2d43809320, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileMatrixArray:
   - m_RefCount: 3
     m_Data:

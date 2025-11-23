@@ -11,6 +11,7 @@ public class respawn : MonoBehaviour
     public float fallThreshold = -3;
     public float fallDistance;
     public float deathCooldown = 3f;
+    public float distanceToStamina = 0.5f;
     public bool isDead;
     public Rigidbody2D rb;
     public Transform RespawnReference;
@@ -30,8 +31,12 @@ public class respawn : MonoBehaviour
         {
             if (movement.IsGrounded && !isDead)
             {
-                Debug.Log("Respawn");
-                StartCoroutine(Respawn());
+                float convertedDistance = Mathf.Abs(fallDistance - fallThreshold);
+                if (!stamina.consumeStamina(distanceToStamina * convertedDistance))
+                {
+                    stamina.setStamina(0);
+                    StartCoroutine(Respawn());
+                }
                 fallDistance = 0;
             }
         }
