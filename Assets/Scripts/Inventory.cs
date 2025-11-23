@@ -24,7 +24,7 @@ public class Inventory : MonoBehaviour
     public bool PickupItem(GameObject itemPrefab)
     {
         // Early detection to avoid problems, even though the check should be handled by the calling script
-        if (!CanPickup())
+        if (CanPickup())
         {
             return false;
         }
