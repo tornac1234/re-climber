@@ -770,10 +770,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   stamina: {fileID: 6805741570450219017}
-  IsClimbing: 0
-  IsGrounded: 0
-  fallThreshold: -10
+  climbing: {fileID: 2003540535886879946}
+  movement: {fileID: 853018641667651778}
+  fallThreshold: -0.05
   falldistance: 0
+  deathCooldown: 3
   rb: {fileID: 873226215255645382}
 --- !u!1 &7265628428332412931
 GameObject:
