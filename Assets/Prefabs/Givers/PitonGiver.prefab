@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed3a8e6ac0d7b694e8920ad6afe60d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemReference
-  reference: {fileID: 6502620794867488109, guid: efac1e8fb1744f247a652d84a39aa158, type: 3}
+  reference: {fileID: 6502620794867488109, guid: ddfc2e78d0b80714e9c561c4a2d5554f, type: 3}
 --- !u!61 &5798506725000876741
 BoxCollider2D:
   m_ObjectHideFlags: 0
