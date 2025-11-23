@@ -171,6 +171,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6990854402608916400, guid: f23d93ac1776a174c8042dadfe2aec36, type: 3}
+      propertyPath: RespawnReference
+      value: 
+      objectReference: {fileID: 1662682777}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -378,6 +382,11 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!4 &1662682777 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 120269312142412392, guid: 8160840b90a5bbb4c9bf08bc9af33da2, type: 3}
+  m_PrefabInstance: {fileID: 537868257}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1707275719
 GameObject:
   m_ObjectHideFlags: 0
