@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: RopeData
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   Name: Rope
-  InventorySprite: {fileID: -3694720052658949959, guid: 3869974cff64b3741a04f67e6d729909, type: 3}
+  InventorySprite: {fileID: 21300000, guid: 3869974cff64b3741a04f67e6d729909, type: 3}
