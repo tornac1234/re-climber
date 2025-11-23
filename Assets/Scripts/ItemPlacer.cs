@@ -78,7 +78,7 @@ public class ItemPlacer : MonoBehaviour
                 break;
 
             case "Piton":
-                inventory.transform.position = PitonPlaceReference.position;
+                instance.transform.position = PitonPlaceReference.position;
                 break;
         }
     }

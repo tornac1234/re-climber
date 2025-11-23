@@ -11,6 +11,8 @@ public class Stamina : MonoBehaviour
     public float ratioDepleteOnRope = 0.15F;
     public UnityAction noStamina;
 
+    public PitonGrabber pitonGrabber;
+
     public void setStamina(float newValue)
     {
         /*
@@ -38,7 +40,7 @@ public class Stamina : MonoBehaviour
     {
         float dt = Time.deltaTime;
         bool isClimbing = climbing.IsClimbing;
-        bool isResting = climbing.IsPiton || climbing.movement.IsGrounded;
+        bool isResting = pitonGrabber.isGrabbing || climbing.movement.IsGrounded;
         if (isResting)
         {
             if (value < 1.0)

@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 
 public class respawn : MonoBehaviour
@@ -14,7 +15,10 @@ public class respawn : MonoBehaviour
     public Rigidbody2D rb;
     public Transform RespawnReference;
 
-    private void Start()    
+    public static event UnityAction OnDeath;
+    public static event UnityAction OnRespawn;
+
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         stamina = GetComponent<Stamina>();
@@ -50,6 +54,7 @@ public class respawn : MonoBehaviour
         isDead = true;
         climbing.enabled = false;
         movement.enabled = false;
+        OnDeath?.Invoke();
 
         yield return new WaitForSeconds(deathCooldown);
         transform.position = RespawnReference.position;
@@ -58,5 +63,7 @@ public class respawn : MonoBehaviour
         isDead = false;
         climbing.enabled = true;
         movement.enabled = true;
+
+        OnRespawn?.Invoke();
     }
 }

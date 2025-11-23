@@ -74,7 +74,6 @@ GameObject:
   - component: {fileID: 6847530899498563602}
   - component: {fileID: -4636363008637418038}
   - component: {fileID: 9086590666816910237}
-  - component: {fileID: 495535202896014547}
   - component: {fileID: 1195010320101905050}
   - component: {fileID: 363060333738920693}
   - component: {fileID: 873226215255645382}
@@ -87,6 +86,8 @@ GameObject:
   - component: {fileID: 8683820392907826675}
   - component: {fileID: 6990854402608916400}
   - component: {fileID: 5019277746714186467}
+  - component: {fileID: 4184617927349558758}
+  - component: {fileID: 5524706015828068719}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -104,7 +105,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 15, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1095988720944889886}
@@ -129,8 +130,8 @@ MonoBehaviour:
   selectedPrefab: {fileID: 0}
   RopePlaceReference: {fileID: 5613059633008231996}
   PitonPlaceReference: {fileID: 2473356487103264830}
-  climbing: {fileID: 0}
-  movement: {fileID: 0}
+  climbing: {fileID: 2003540535886879946}
+  movement: {fileID: 853018641667651778}
 --- !u!114 &-4636363008637418038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,18 +202,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &495535202896014547
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5471282040733424839}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3592b149669eb8d4abe578da8368407d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Inventory
 --- !u!114 &1195010320101905050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,7 +215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickUp
   itemsAround: []
-  inventory: {fileID: 495535202896014547}
+  inventory: {fileID: -4636363008637418038}
   movement: {fileID: 853018641667651778}
   climbing: {fileID: 2003540535886879946}
 --- !u!61 &363060333738920693
@@ -879,6 +868,40 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &4184617927349558758
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5471282040733424839}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a2cebf09a40802542bf3a24f408a1ce8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5524706015828068719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5471282040733424839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b96d6aee915cb74cad6ff9822f3acb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PitonGrabber
 --- !u!1 &7265628428332412931
 GameObject:
   m_ObjectHideFlags: 0
